@@ -10,8 +10,40 @@ module.exports = {
     travel: (req, res) => {
         console.dir(req.body)
         res.json({
-            "speech": "Your travel insurance needs have been served",
-            "displayText": "Your travel insurance needs have been served"
+            "fulfillmentText": "text1",
+            "fulfillmentMessages": [{
+                    "platform": "FACEBOOK",
+                    "card": {
+                        "title": "Title: this is a title",
+                        "subtitle": "This is an subtitle.  Text can include unicode characters including emoji 📱.",
+                        "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
+                        "buttons": [{
+                            "text": "This is a button",
+                            "postback": "https://assistant.google.com/"
+                        }]
+                    }
+                },
+                {
+                    "platform": "FACEBOOK",
+                    "card": {
+                        "title": "Title: this is a title",
+                        "subtitle": "This is an subtitle.  Text can include unicode characters including emoji 📱.",
+                        "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
+                        "buttons": [{
+                            "text": "This is a button",
+                            "postback": "https://assistant.google.com/"
+                        }]
+                    }
+                },
+                {
+                    "text": {
+                        "text": [
+                            "Hello, World!"
+                        ]
+                    }
+                }
+            ],
+            "source": "Frakcool-Bot"
         })
     },
 
