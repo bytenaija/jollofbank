@@ -1,11 +1,11 @@
 let express = require('express');
-const PORT = proces.env.PORT || 8000;
+const PORT = process.env.PORT || 8000;
 let app = express();
 
 app.use(express.json());
 
 
-app.use(express.urlEncoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
 
 let InsuranceController = require('./controllers/Insurance');
 
