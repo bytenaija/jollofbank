@@ -8,7 +8,7 @@ function lifeInsurance(req, res) {
                     "subtitle": "This is an subtitle.  Text can include unicode characters including emoji 📱.",
                     "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
                     "buttons": [{
-                        "text": "Life Insurance Baby",
+                        "text": "Your Life Insurance policy has been generated. We will email you the contract for signing",
                         "postback": "https://assistant.google.com/"
                     }]
                 }
@@ -20,7 +20,7 @@ function lifeInsurance(req, res) {
                     "subtitle": "This is an subtitle.  Text can include unicode characters including emoji 📱.",
                     "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
                     "buttons": [{
-                        "text": "Life Insurance Baby",
+                        "text": "Your Life Insurance policy has been generated. We will email you the contract for signing",
                         "postback": "https://assistant.google.com/"
                     }]
                 }
@@ -28,7 +28,7 @@ function lifeInsurance(req, res) {
             {
                 "text": {
                     "text": [
-                        "Life Insurance Baby!"
+                        "Your Life Insurance policy has been generated. We will email you the contract for signing!"
                     ]
                 }
             }
@@ -49,7 +49,7 @@ function carInsurance(req, res) {
                     "subtitle": "This is an subtitle.  Text can include unicode characters including emoji 📱.",
                     "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
                     "buttons": [{
-                        "text": "Car Insurance Baby",
+                        "text": "Your Car Insurance policy has been generated. We will email you the contract for signing",
                         "postback": "https://assistant.google.com/"
                     }]
                 }
@@ -61,7 +61,7 @@ function carInsurance(req, res) {
                     "subtitle": "This is an subtitle.  Text can include unicode characters including emoji 📱.",
                     "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
                     "buttons": [{
-                        "text": "Car Insurance Baby",
+                        "text": "Your Car Insurance policy has been generated. We will email you the contract for signing",
                         "postback": "https://assistant.google.com/"
                     }]
                 }
@@ -69,7 +69,7 @@ function carInsurance(req, res) {
             {
                 "text": {
                     "text": [
-                        "Car Insurance Baby!"
+                        "Your Car Insurance policy has been generated. We will email you the contract for signing!"
                     ]
                 }
             }
@@ -88,7 +88,7 @@ function travelInsurance(req, res) {
                     "subtitle": "This is an subtitle.  Text can include unicode characters including emoji 📱.",
                     "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
                     "buttons": [{
-                        "text": "Travel Insurance Baby",
+                        "text": "Your Travel Insurance policy has been generated. We will email you the contract for signing",
                         "postback": "https://assistant.google.com/"
                     }]
                 }
@@ -100,7 +100,7 @@ function travelInsurance(req, res) {
                     "subtitle": "This is an subtitle.  Text can include unicode characters including emoji 📱.",
                     "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
                     "buttons": [{
-                        "text": "Travel Insurance Baby",
+                        "text": "Your Travel Insurance policy has been generated. We will email you the contract for signing",
                         "postback": "https://assistant.google.com/"
                     }]
                 }
@@ -108,7 +108,7 @@ function travelInsurance(req, res) {
             {
                 "text": {
                     "text": [
-                        "Travel Insurance Baby!"
+                        "Your Travel Insurance policy has been generated. We will email you the contract for signing!"
                     ]
                 }
             }
@@ -120,7 +120,7 @@ function travelInsurance(req, res) {
 module.exports = {
 
     insurance: (req, res) => {
-        console.dir(req.body.originalDetectIntentRequest.payload.data.sender);
+        console.dir(req.body.originalDetectIntentRequest.payload.data.sender.id);
         console.dir(req.body.queryResult.intent.displayName)
         switch (req.body.queryResult.intent.displayName) {
             case 'Life Insurance':
