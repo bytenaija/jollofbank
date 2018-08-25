@@ -4,8 +4,8 @@ function lifeInsurance(req, res) {
         "fulfillmentMessages": [{
                 "platform": "FACEBOOK",
                 "card": {
-                    "title": "Title: this is a title",
-                    "subtitle": "This is an subtitle.  Text can include unicode characters including emoji 📱.",
+                    "title": "Life Insurance",
+                    "subtitle": "Your Life Insurance policy has been generated. We will email you the contract for signing.",
                     "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
                     "buttons": [{
                         "text": "Your Life Insurance policy has been generated. We will email you the contract for signing",
@@ -16,8 +16,8 @@ function lifeInsurance(req, res) {
             {
                 "platform": "FACEBOOK",
                 "card": {
-                    "title": "Title: this is a title",
-                    "subtitle": "This is an subtitle.  Text can include unicode characters including emoji 📱.",
+                    "title": "Life Insurance",
+                    "subtitle": "Your Life Insurance policy has been generated. We will email you the contract for signing.",
                     "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
                     "buttons": [{
                         "text": "Your Life Insurance policy has been generated. We will email you the contract for signing",
@@ -45,8 +45,8 @@ function carInsurance(req, res) {
         "fulfillmentMessages": [{
                 "platform": "FACEBOOK",
                 "card": {
-                    "title": "Title: this is a title",
-                    "subtitle": "This is an subtitle.  Text can include unicode characters including emoji 📱.",
+                    "title": "Car Insurance",
+                    "subtitle": "Your Car Insurance policy has been generated. We will email you the contract for signing.",
                     "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
                     "buttons": [{
                         "text": "Your Car Insurance policy has been generated. We will email you the contract for signing",
@@ -57,8 +57,8 @@ function carInsurance(req, res) {
             {
                 "platform": "FACEBOOK",
                 "card": {
-                    "title": "Title: this is a title",
-                    "subtitle": "This is an subtitle.  Text can include unicode characters including emoji 📱.",
+                    "title": "Car Insurance",
+                    "subtitle": "Your Car Insurance policy has been generated. We will email you the contract for signing.",
                     "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
                     "buttons": [{
                         "text": "Your Car Insurance policy has been generated. We will email you the contract for signing",
@@ -84,8 +84,8 @@ function travelInsurance(req, res) {
         "fulfillmentMessages": [{
                 "platform": "FACEBOOK",
                 "card": {
-                    "title": "Title: this is a title",
-                    "subtitle": "This is an subtitle.  Text can include unicode characters including emoji 📱.",
+                    "title": "Travel Insurance",
+                    "subtitle": "Your Travel Insurance policy has been generated. We will email you the contract for signing.",
                     "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
                     "buttons": [{
                         "text": "Your Travel Insurance policy has been generated. We will email you the contract for signing",
@@ -96,8 +96,8 @@ function travelInsurance(req, res) {
             {
                 "platform": "FACEBOOK",
                 "card": {
-                    "title": "Title: this is a title",
-                    "subtitle": "This is an subtitle.  Text can include unicode characters including emoji 📱.",
+                    "title": "Travel Insurance",
+                    "subtitle": "Your Travel Insurance policy has been generated. We will email you the contract for signing.",
                     "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
                     "buttons": [{
                         "text": "Your Travel Insurance policy has been generated. We will email you the contract for signing",
