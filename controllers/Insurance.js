@@ -86,8 +86,8 @@ module.exports = {
     },
 
     travel: (req, res) => {
-        console.dir(req)
-        switch (req.body.displayName) {
+        console.dir(req.body.result)
+        switch (req.body.result.displayName) {
             case 'Life Insurance':
                 console.log("Life Insurance")
 
