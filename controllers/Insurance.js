@@ -1,3 +1,81 @@
+function lifeInsurance(req, res) {
+    res.json({
+        "fulfillmentText": "text1",
+        "fulfillmentMessages": [{
+                "platform": "FACEBOOK",
+                "card": {
+                    "title": "Title: this is a title",
+                    "subtitle": "This is an subtitle.  Text can include unicode characters including emoji 📱.",
+                    "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
+                    "buttons": [{
+                        "text": "Life Insurance Baby",
+                        "postback": "https://assistant.google.com/"
+                    }]
+                }
+            },
+            {
+                "platform": "FACEBOOK",
+                "card": {
+                    "title": "Title: this is a title",
+                    "subtitle": "This is an subtitle.  Text can include unicode characters including emoji 📱.",
+                    "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
+                    "buttons": [{
+                        "text": "Life Insurance Baby",
+                        "postback": "https://assistant.google.com/"
+                    }]
+                }
+            },
+            {
+                "text": {
+                    "text": [
+                        "Life Insurance Baby!"
+                    ]
+                }
+            }
+        ],
+        "source": "RepInBot"
+    })
+}
+
+function travelInsurance(req, res) {
+    res.json({
+        "fulfillmentText": "text1",
+        "fulfillmentMessages": [{
+                "platform": "FACEBOOK",
+                "card": {
+                    "title": "Title: this is a title",
+                    "subtitle": "This is an subtitle.  Text can include unicode characters including emoji 📱.",
+                    "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
+                    "buttons": [{
+                        "text": "Travel Insurance Baby",
+                        "postback": "https://assistant.google.com/"
+                    }]
+                }
+            },
+            {
+                "platform": "FACEBOOK",
+                "card": {
+                    "title": "Title: this is a title",
+                    "subtitle": "This is an subtitle.  Text can include unicode characters including emoji 📱.",
+                    "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
+                    "buttons": [{
+                        "text": "Travel Insurance Baby",
+                        "postback": "https://assistant.google.com/"
+                    }]
+                }
+            },
+            {
+                "text": {
+                    "text": [
+                        "Travel Insurance Baby!"
+                    ]
+                }
+            }
+        ],
+        "source": "RepInBot"
+    })
+}
+
 module.exports = {
     car: (req, res) => {
         console.dir(req.body)
@@ -8,43 +86,21 @@ module.exports = {
     },
 
     travel: (req, res) => {
-        console.dir(req.body)
-        res.json({
-            "fulfillmentText": "text1",
-            "fulfillmentMessages": [{
-                    "platform": "FACEBOOK",
-                    "card": {
-                        "title": "Title: this is a title",
-                        "subtitle": "This is an subtitle.  Text can include unicode characters including emoji 📱.",
-                        "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
-                        "buttons": [{
-                            "text": "This is a button",
-                            "postback": "https://assistant.google.com/"
-                        }]
-                    }
-                },
-                {
-                    "platform": "FACEBOOK",
-                    "card": {
-                        "title": "Title: this is a title",
-                        "subtitle": "This is an subtitle.  Text can include unicode characters including emoji 📱.",
-                        "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
-                        "buttons": [{
-                            "text": "This is a button",
-                            "postback": "https://assistant.google.com/"
-                        }]
-                    }
-                },
-                {
-                    "text": {
-                        "text": [
-                            "Hello, World!"
-                        ]
-                    }
-                }
-            ],
-            "source": "Frakcool-Bot"
-        })
+        console.dir(req.body.intent)
+        switch (req.body.intent.displayName) {
+            case 'Life Insurance':
+                console.log("Life Insurance")
+
+                lifeInsurance(req, res);
+                break;
+
+            case 'Travel Insurance':
+                console.log("Travel Insurance")
+
+                travelInsurance(req, res);
+                break;
+        }
+
     },
 
     home: (req, res) => {
