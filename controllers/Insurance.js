@@ -86,7 +86,7 @@ module.exports = {
     },
 
     travel: (req, res) => {
-        console.dir(req.body.queryResult.outputContexts.Intent)
+        console.dir(req.body.queryResult.outputContexts)
             /* switch (req.body.result.displayName) {
                 case 'Life Insurance':
                     console.log("Life Insurance")
