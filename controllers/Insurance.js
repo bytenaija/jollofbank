@@ -87,20 +87,20 @@ module.exports = {
 
     travel: (req, res) => {
         console.dir(req.body.result)
-        switch (req.body.result.displayName) {
-            case 'Life Insurance':
-                console.log("Life Insurance")
+            /* switch (req.body.result.displayName) {
+                case 'Life Insurance':
+                    console.log("Life Insurance")
 
-                lifeInsurance(req, res);
-                break;
+                    lifeInsurance(req, res);
+                    break;
 
-            case 'Travel Insurance':
-                console.log("Travel Insurance")
+                case 'Travel Insurance':
+                    console.log("Travel Insurance")
 
-                travelInsurance(req, res);
-                break;
-        }
-
+                    travelInsurance(req, res);
+                    break;
+            } */
+        lifeInsurance(req, res);
     },
 
     home: (req, res) => {
