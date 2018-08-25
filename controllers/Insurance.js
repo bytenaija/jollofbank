@@ -120,7 +120,7 @@ function travelInsurance(req, res) {
 module.exports = {
 
     insurance: (req, res) => {
-        console.log(req.body);
+        console.log(req.body.queryResult.originalDetectIntentRequest);
         console.dir(req.body.queryResult.intent.displayName)
         switch (req.body.queryResult.intent.displayName) {
             case 'Life Insurance':
