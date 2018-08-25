@@ -9,10 +9,9 @@ app.use(express.urlencoded({ extended: false }));
 
 let InsuranceController = require('./controllers/Insurance');
 
-app.post('/car', InsuranceController.car)
-app.post('/travel', InsuranceController.travel)
-app.post('/home', InsuranceController.home)
-app.post('/life', InsuranceController.life)
+
+app.post('/travel', InsuranceController.insurance)
+
 
 
 app.listen(PORT, () => {
