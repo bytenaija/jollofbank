@@ -153,7 +153,8 @@ function travelInsurance(req, res) {
 module.exports = {
 
     insurance: (req, res) => {
-        //  console.dir(req.body.originalDetectIntentRequest.payload.data.sender.id);
+        console.dir(req.body.queryResult)
+            //  console.dir(req.body.originalDetectIntentRequest.payload.data.sender.id);
         console.dir(req.body.queryResult.action)
         switch (req.body.queryResult.action) {
             case 'LifeInsurance.InsuranceType':
