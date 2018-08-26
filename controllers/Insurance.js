@@ -3,35 +3,15 @@ function lifeInsurance(req, res) {
         "fulfillmentText": "text1",
         "fulfillmentMessages": [{
                 "platform": "FACEBOOK",
-                "card": {
-                    "title": "Life Insurance",
-                    "subtitle": "Your Life Insurance policy has been generated. We will email you the contract for signing.",
-                    "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
-                    "buttons": [{
-                        "text": "Your Life Insurance policy has been generated. We will email you the contract for signing",
-                        "postback": "https://assistant.google.com/"
-                    }]
-                }
+                "replies": [
+                    "Quick reply 1",
+                    "Quick reply 2",
+                    "Quick reply 3"
+                ],
+                "title": "Quick Reply Title",
+                "type": 2
             },
-            {
-                "platform": "FACEBOOK",
-                "card": {
-                    "title": "Life Insurance",
-                    "subtitle": "Your Life Insurance policy has been generated. We will email you the contract for signing.",
-                    "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
-                    "buttons": [{
-                        "text": "Your Life Insurance policy has been generated. We will email you the contract for signing",
-                        "postback": "https://assistant.google.com/"
-                    }]
-                }
-            },
-            {
-                "text": {
-                    "text": [
-                        "Your Life Insurance policy has been generated. We will email you the contract for signing!"
-                    ]
-                }
-            }
+
         ],
         "source": "RepInBot"
     })
