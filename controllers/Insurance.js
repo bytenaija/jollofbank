@@ -3,18 +3,20 @@ function lifeInsurance(req, res) {
         "fulfillmentText": "text1",
         "fulfillmentMessages": [{
                 "platform": "FACEBOOK",
-                "message": {
-                    "text": "Here is a quick reply!",
-                    "quick_replies": [{
-                            "content_type": "text",
-                            "title": "Search",
-                            "payload": "<POSTBACK_PAYLOAD>",
-                            "image_url": "http://example.com/img/red.png"
-                        },
-                        {
-                            "content_type": "location"
-                        }
+                "quickReplies": {
+
+                    "title": "quick replies title",
+
+                    "quickReplies": [
+
+                        "quick reply 1",
+
+                        "quick reply 2",
+
+                        "quick reply 3"
+
                     ]
+
                 }
             }
 
