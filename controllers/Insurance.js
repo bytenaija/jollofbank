@@ -3,17 +3,29 @@ function lifeInsurance(req, res) {
         "fulfillmentText": "text1",
         "fulfillmentMessages": [{
                 "platform": "FACEBOOK",
+                "text": {
+
+                    "text": [
+
+                        "You insurance needs is evaluated at 20000 USD per day."
+
+                    ]
+
+                }
+            },
+            {
+                "platform": "FACEBOOK",
                 "quickReplies": {
 
-                    "title": "quick replies title",
+                    "title": "Do you want to continue?",
 
                     "quickReplies": [
 
-                        "quick reply 1",
+                        "Yes",
 
-                        "quick reply 2",
+                        "No",
 
-                        "quick reply 3"
+
 
                     ]
 
