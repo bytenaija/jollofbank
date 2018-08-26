@@ -3,7 +3,7 @@ function lifeInsurance(req, res) {
         "fulfillmentText": "text1",
         "fulfillmentMessages": [{
                 "platform": "FACEBOOK",
-                "replies": [
+                "quick_replies": [
                     "Yes",
                     "No"
 
