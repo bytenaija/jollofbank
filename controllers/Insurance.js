@@ -71,7 +71,7 @@ function lifeInsuranceConfirm(req, res) {
         "source": "RepInBot",
         "outputContexts": [{
             name: req.body.queryResult.outputContexts[0].name,
-            "lifespanCount": 2,
+            "lifespanCount": 0,
 
             "parameters": {}
         }]
