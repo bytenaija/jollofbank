@@ -68,7 +68,8 @@ function lifeInsuranceConfirm(req, res) {
 
 
         ],
-        "source": "RepInBot"
+        "source": "RepInBot",
+        "outputContexts": []
     })
 }
 
@@ -146,7 +147,8 @@ function travelInsurance(req, res) {
                 }
             }
         ],
-        "source": "RepInBot"
+        "source": "RepInBot",
+        "outputContexts": []
     })
 }
 
