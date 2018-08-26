@@ -121,7 +121,7 @@ module.exports = {
 
     insurance: (req, res) => {
         //  console.dir(req.body.originalDetectIntentRequest.payload.data.sender.id);
-        console.dir(req.body.queryResult.intent.displayName)
+        console.dir(req.body.queryResult.action)
         switch (req.body.queryResult.intent.displayName) {
             case 'Life Insurance':
                 console.log("Life Insurance")
