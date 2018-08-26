@@ -3,14 +3,20 @@ function lifeInsurance(req, res) {
         "fulfillmentText": "text1",
         "fulfillmentMessages": [{
                 "platform": "FACEBOOK",
-                "quick_replies": [
-                    "Yes",
-                    "No"
-
-                ],
-                "title": "Your insurance will cost 20000 USD. Are you sure you want to continue?",
-                "type": 2
-            },
+                "message": {
+                    "text": "Here is a quick reply!",
+                    "quick_replies": [{
+                            "content_type": "text",
+                            "title": "Search",
+                            "payload": "<POSTBACK_PAYLOAD>",
+                            "image_url": "http://example.com/img/red.png"
+                        },
+                        {
+                            "content_type": "location"
+                        }
+                    ]
+                }
+            }
 
         ],
         "source": "RepInBot"
