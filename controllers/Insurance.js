@@ -69,7 +69,12 @@ function lifeInsuranceConfirm(req, res) {
 
         ],
         "source": "RepInBot",
-        "outputContexts": []
+        "outputContexts": [{
+            name: 'projects/repinbot/agent/sessions/8cfec2a0-f522-4565-a5ae-5fc3219262a8/contexts/generic',
+            "lifespanCount": 0,
+
+            "parameters": {}
+        }]
     })
 }
 
