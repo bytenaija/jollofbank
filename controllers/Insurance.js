@@ -4,11 +4,11 @@ function lifeInsurance(req, res) {
         "fulfillmentMessages": [{
                 "platform": "FACEBOOK",
                 "replies": [
-                    "Quick reply 1",
-                    "Quick reply 2",
-                    "Quick reply 3"
+                    "Yes",
+                    "No"
+
                 ],
-                "title": "Quick Reply Title",
+                "title": "Your insurance will cost 20000 USD. Are you sure you want to continue?",
                 "type": 2
             },
 
