@@ -37,7 +37,40 @@ function lifeInsurance(req, res) {
     })
 }
 
+function lifeInsuranceConfirm(req, res) {
+    res.json({
+        "fulfillmentText": "text1",
+        "fulfillmentMessages": [{
+                "platform": "FACEBOOK",
+                "text": {
 
+                    "text": [
+
+                        "We have booked your insurance. You will pay 20000 USD per day."
+
+                    ]
+
+                }
+            },
+
+            {
+                "platform": "FACEBOOK",
+                "text": {
+
+                    "text": [
+
+                        "Thank you for your patronage."
+
+                    ]
+
+                }
+            }
+
+
+        ],
+        "source": "RepInBot"
+    })
+}
 
 function carInsurance(req, res) {
     res.json({
@@ -122,13 +155,17 @@ module.exports = {
     insurance: (req, res) => {
         //  console.dir(req.body.originalDetectIntentRequest.payload.data.sender.id);
         console.dir(req.body.queryResult.action)
-        switch (req.body.queryResult.intent.displayName) {
-            case 'Life Insurance':
+        switch (req.body.queryResult.action) {
+            case 'LifeInsurance.InsuranceType':
                 console.log("Life Insurance")
 
                 lifeInsurance(req, res);
                 break;
+            case 'LifeInsurance.Confirm':
+                console.log("Life Insurance Confirm")
 
+                lifeInsuranceConfirm(req, res);
+                break;
             case 'Travel Insurance':
                 console.log("Travel Insurance")
 
