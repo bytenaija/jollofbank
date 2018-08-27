@@ -35,6 +35,19 @@ function lifeInsurance(req, res) {
             },
             {
                 "platform": "FACEBOOK",
+
+                "text": {
+
+                    "text": [
+
+                        `You insurance premium for ${firstname} ${lastname}, ${age.amount} ${age.unit}, ${verb} pre-existing conditions is evaluated at ${amount} naira per year.`
+
+                    ]
+
+                }
+            },
+            {
+                "platform": "FACEBOOK",
                 "quickReplies": {
 
                     "title": "Do you want to continue?",
