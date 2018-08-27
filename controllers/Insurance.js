@@ -84,7 +84,7 @@ function carInsurance(req, res) {
     outputContexts = req.body.queryResult.outputContexts;
     outputContexts = outputContexts[outputContexts.length - 1];
     brand = outputContexts.brand,
-        year = outputContexts.year,
+        year = outputContexts.Year,
         model = outputContexts.model,
         amount = Math.floor(1000 - Math.random() * 3000);
     res.json({
