@@ -1,3 +1,5 @@
+let outputContexts, brand, amount, model, year;
+
 function lifeInsurance(req, res) {
     res.json({
         "fulfillmentText": "text1",
@@ -79,41 +81,129 @@ function lifeInsuranceConfirm(req, res) {
 }
 
 function carInsurance(req, res) {
+    outputContexts = req.body.queryResult.outputContexts;
+    outputContexts = outputContexts[outputContexts.length - 1];
+    brand = outputContexts.brand,
+        year = outputContexts.year,
+        model = outputContexts.model,
+        amount = Math.floor(1000 - Math.random() * 3000);
     res.json({
         "fulfillmentText": "text1",
         "fulfillmentMessages": [{
                 "platform": "FACEBOOK",
-                "card": {
-                    "title": "Car Insurance",
-                    "subtitle": "Your Car Insurance policy has been generated. We will email you the contract for signing.",
-                    "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
-                    "buttons": [{
-                        "text": "Your Car Insurance policy has been generated. We will email you the contract for signing",
-                        "postback": "https://assistant.google.com/"
-                    }]
+                "text": {
+
+                    "text": [
+
+                        `You insurance needs for a ${year} ${brand} ${model} is evaluated at ${amount} Naira per year.`
+
+                    ]
+
                 }
             },
             {
                 "platform": "FACEBOOK",
-                "card": {
-                    "title": "Car Insurance",
-                    "subtitle": "Your Car Insurance policy has been generated. We will email you the contract for signing.",
-                    "imageUri": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
-                    "buttons": [{
-                        "text": "Your Car Insurance policy has been generated. We will email you the contract for signing",
-                        "postback": "https://assistant.google.com/"
-                    }]
+                "quickReplies": {
+
+                    "title": "Do you want to continue?",
+
+                    "quickReplies": [
+
+                        "Yes",
+
+                        "No",
+
+
+
+                    ]
+
+                }
+            },
+
+            {
+
+                "text": {
+
+                    "text": [
+
+                        `You insurance needs for a ${year} ${brand} ${model} is evaluated at ${amount} Naira per year.`,
+                        "Do you want to continue"
+
+                    ]
+
+                }
+            },
+
+
+
+        ],
+        "source": "RepInBot"
+    })
+}
+
+function carInsuranceConfirm(req, res) {
+    res.json({
+        "fulfillmentText": "text1",
+        "fulfillmentMessages": [{
+                "platform": "FACEBOOK",
+                "text": {
+
+                    "text": [
+
+                        `We have booked your insurance. You will pay ${amount} Naira per year.`
+
+                    ]
+
+                }
+            },
+
+            {
+                "platform": "FACEBOOK",
+                "text": {
+
+                    "text": [
+
+                        "Thank you for your patronage."
+
+                    ]
+
                 }
             },
             {
+
                 "text": {
+
                     "text": [
-                        "Your Car Insurance policy has been generated. We will email you the contract for signing!"
+
+                        `We have booked your  insurance. You will pay ${amount} Naira per year.`
+
                     ]
+
                 }
-            }
+            },
+
+            {
+
+                "text": {
+
+                    "text": [
+
+                        "Thank you for your patronage."
+
+                    ]
+
+                }
+            },
+
+
         ],
-        "source": "RepInBot"
+        "source": "RepInBot",
+        "outputContexts": [{
+            name: req.body.queryResult.outputContexts[0].name,
+            "lifespanCount": 0,
+
+            "parameters": {}
+        }]
     })
 }
 
@@ -185,6 +275,12 @@ module.exports = {
                 console.log("Car Insurance")
 
                 carInsurance(req, res);
+                break;
+
+            case 'carInsurance.confirm':
+                console.log("Car Insurance Confirm")
+
+                carInsuranceConfirm(req, res);
                 break;
         }
         // lifeInsurance(req, res);
