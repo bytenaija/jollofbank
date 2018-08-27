@@ -404,7 +404,7 @@ module.exports = {
         //console.dir(outputContexts[outputContexts.length - 1].parameters)
         //  console.dir(req.body.originalDetectIntentRequest.payload.data.sender.id);
         // console.dir(req.body.queryResult.action)
-        switch (req.body.queryResult.action) {
+        switch (agent.action) {
             case 'LifeInsurance.InsuranceType':
                 // console.log("Life Insurance")
 
