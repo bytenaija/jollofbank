@@ -1,4 +1,5 @@
 let outputContexts, brand, amount, model, year, firstname, lastname, age, InsuranceType, pre, phoneNumber, email, verb;
+const { WebhookClient } = require('dialogflow-fulfillment');
 
 function lifeInsurance(req, res) {
     outputContexts = req.body.queryResult.outputContexts;
@@ -234,7 +235,7 @@ function carInsurance(req, res) {
 
 function carInsuranceConfirm(req, res) {
     if (req.body.queryResult.parameters.confirm == 'Yes') {
-
+        console.log('Confimation');
         res.json({
             "queryResult": {
                 "diagnosticInfo": {
@@ -306,12 +307,6 @@ function carInsuranceConfirm(req, res) {
         })
     } else {
         res.json({
-            "queryResult": {
-                "diagnosticInfo": {
-                    "end_conversation": true
-                },
-
-            },
             "fulfillmentText": "text1",
             "fulfillmentMessages": [{
 
@@ -345,11 +340,17 @@ function carInsuranceConfirm(req, res) {
             ],
             "source": "RepInBot",
             "outputContexts": [{
-                name: req.body.queryResult.outputContexts[0].name,
+                name: req.body.queryResult.outputContexts[req.body.queryResult.outputContexts.length - 1].name,
                 "lifespanCount": 0,
 
                 "parameters": {}
-            }]
+            }],
+
+            "diagnosticInfo": {
+                "end_conversation": true
+            },
+
+
         })
     }
 }
@@ -397,35 +398,37 @@ function travelInsurance(req, res) {
 module.exports = {
 
     insurance: (req, res) => {
+        const agent = new WebhookClient({ req, res });
+        console.dir(agent);
         let outputContexts = req.body.queryResult.outputContexts;
-        console.dir(outputContexts[outputContexts.length - 1].parameters)
-            //  console.dir(req.body.originalDetectIntentRequest.payload.data.sender.id);
-        console.dir(req.body.queryResult.action)
+        //console.dir(outputContexts[outputContexts.length - 1].parameters)
+        //  console.dir(req.body.originalDetectIntentRequest.payload.data.sender.id);
+        // console.dir(req.body.queryResult.action)
         switch (req.body.queryResult.action) {
             case 'LifeInsurance.InsuranceType':
-                console.log("Life Insurance")
+                // console.log("Life Insurance")
 
                 lifeInsurance(req, res);
                 break;
             case 'LifeInsurance.Confirm':
-                console.log("Life Insurance Confirm")
+                // console.log("Life Insurance Confirm")
 
                 lifeInsuranceConfirm(req, res);
                 break;
             case 'travelInsurance':
-                console.log("Travel Insurance")
+                //console.log("Travel Insurance")
 
                 travelInsurance(req, res);
                 break;
 
             case 'carInsurance':
-                console.log("Car Insurance")
+                // console.log("Car Insurance")
 
                 carInsurance(req, res);
                 break;
 
             case 'carInsurance.confirm':
-                console.log("Car Insurance Confirm")
+                // console.log("Car Insurance Confirm")
 
                 carInsuranceConfirm(req, res);
                 break;
