@@ -399,7 +399,7 @@ module.exports = {
 
     insurance: (req, res) => {
         const agent = new WebhookClient({ request: req, response: res });
-        console.dir(agent);
+        console.dir(agent.action);
         let outputContexts = req.body.queryResult.outputContexts;
         //console.dir(outputContexts[outputContexts.length - 1].parameters)
         //  console.dir(req.body.originalDetectIntentRequest.payload.data.sender.id);
