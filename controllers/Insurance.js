@@ -1,4 +1,4 @@
-let outputContexts, brand, amount, model, year, firstname, lastname, age, InsuranceType, pre, phoneNumber, email;
+let outputContexts, brand, amount, model, year, firstname, lastname, age, InsuranceType, pre, phoneNumber, email, verb;
 
 function lifeInsurance(req, res) {
     outputContexts = req.body.queryResult.outputContexts;
@@ -16,7 +16,7 @@ function lifeInsurance(req, res) {
         phoneNumber = outputContexts.phone,
         email = outputContexts.email,
         amount = Math.floor(1000 + Math.random() * 30000);
-    let verb = pre == 'Yes' ? 'with' : 'without';
+    verb = pre == 'Yes' ? 'with' : 'without';
     console.log(verb);
 
     res.json({
@@ -27,7 +27,7 @@ function lifeInsurance(req, res) {
 
                     "text": [
 
-                        `You insurance premium for ${firstname} ${lastname}, ${age}, ${verb} pre-existing conditions is evaluated at ${amount} naira per year.`
+                        `You insurance premium for ${firstname} ${lastname}, ${age.amount} ${age.unit}, ${verb} pre-existing conditions is evaluated at ${amount} naira per year.`
 
                     ]
 
