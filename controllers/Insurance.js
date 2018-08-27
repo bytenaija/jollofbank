@@ -16,7 +16,7 @@ function lifeInsurance(req, res) {
         phoneNumber = outputContexts.phone,
         email = outputContexts.email,
         amount = Math.floor(1000 + Math.random() * 30000);
-    let verb = pre == 'yes' ? 'with' : 'without';
+    let verb = pre == 'Yes' ? 'with' : 'without';
     console.log(verb);
 
     res.json({
@@ -75,12 +75,12 @@ function lifeInsuranceConfirm(req, res) {
         res.json({
             "fulfillmentText": "text1",
             "fulfillmentMessages": [{
-                    "platform": "FACEBOOK",
+
                     "text": {
 
                         "text": [
 
-                            "We have booked your insurance. You will pay 20000 USD per day."
+                            `You have purchased life insurance policy for  ${firstname} ${lastname}, ${age}, ${verb} pre-existing conditions  for ${amount} Naira per year.`
 
                         ]
 
@@ -88,7 +88,6 @@ function lifeInsuranceConfirm(req, res) {
                 },
 
                 {
-                    "platform": "FACEBOOK",
                     "text": {
 
                         "text": [
