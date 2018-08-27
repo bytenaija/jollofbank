@@ -83,7 +83,7 @@ function lifeInsuranceConfirm(req, res) {
 function carInsurance(req, res) {
     outputContexts = req.body.queryResult.outputContexts;
     console.dir(outputContexts.length);
-    outputContexts = outputContexts[outputContexts.length - 1];
+    outputContexts = outputContexts[outputContexts.length - 1].parameters;
     console.dir("This is it now",
         outputContexts)
     brand = outputContexts.brand,
