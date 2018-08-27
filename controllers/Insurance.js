@@ -145,69 +145,113 @@ function carInsurance(req, res) {
 }
 
 function carInsuranceConfirm(req, res) {
-    res.json({
-        "fulfillmentText": "text1",
-        "fulfillmentMessages": [{
-                "platform": "FACEBOOK",
-                "text": {
+    if (req.body.queryResult.parameters.book == 'yes') {
 
-                    "text": [
+        res.json({
+            "fulfillmentText": "text1",
+            "fulfillmentMessages": [{
+                    "platform": "FACEBOOK",
+                    "text": {
 
-                        `We have booked your insurance. You will pay ${amount} Naira per year.`
+                        "text": [
 
-                    ]
+                            `We have booked your insurance. You will pay ${amount} Naira per year.`
 
-                }
-            },
+                        ]
 
-            {
-                "platform": "FACEBOOK",
-                "text": {
+                    }
+                },
 
-                    "text": [
+                {
+                    "platform": "FACEBOOK",
+                    "text": {
 
-                        "Thank you for your patronage."
+                        "text": [
 
-                    ]
+                            "Thank you for your patronage."
 
-                }
-            },
-            {
+                        ]
 
-                "text": {
+                    }
+                },
+                {
 
-                    "text": [
+                    "text": {
 
-                        `We have booked your  insurance. You will pay ${amount} Naira per year.`
+                        "text": [
 
-                    ]
+                            `We have booked your  insurance. You will pay ${amount} Naira per year.`
 
-                }
-            },
+                        ]
 
-            {
+                    }
+                },
 
-                "text": {
+                {
 
-                    "text": [
+                    "text": {
 
-                        "Thank you for your patronage."
+                        "text": [
 
-                    ]
+                            "Thank you for your patronage."
 
-                }
-            },
+                        ]
+
+                    }
+                },
 
 
-        ],
-        "source": "RepInBot",
-        "outputContexts": [{
-            name: req.body.queryResult.outputContexts[0].name,
-            "lifespanCount": 0,
+            ],
+            "source": "RepInBot",
+            "outputContexts": [{
+                name: req.body.queryResult.outputContexts[0].name,
+                "lifespanCount": 0,
 
-            "parameters": {}
-        }]
-    })
+                "parameters": {}
+            }]
+        })
+    } else {
+        res.json({
+            "fulfillmentText": "text1",
+            "fulfillmentMessages": [{
+
+                    "text": {
+
+                        "text": [
+
+                            `You have declined to insure your ${year} ${brand} ${model} for ${amount} Naira per year.`,
+
+                        ]
+
+                    }
+                },
+
+                {
+
+                    "text": {
+
+                        "text": [
+
+                            `Our agent will follow up with you on how best we can help meet your insurance needs`,
+
+                        ]
+
+                    }
+                },
+
+
+
+
+            ],
+            "source": "RepInBot",
+            "outputContexts": [{
+                name: req.body.queryResult.outputContexts[0].name,
+                "lifespanCount": 0,
+
+                "parameters": {}
+            }]
+        })
+    }
 }
 
 function travelInsurance(req, res) {
