@@ -89,7 +89,7 @@ function carInsurance(req, res) {
     brand = outputContexts.brand,
         year = outputContexts.Year,
         model = outputContexts.model,
-        amount = Math.floor(1000 - Math.random() * 3000);
+        amount = Math.floor(1000 + Math.random() * 30000);
     res.json({
         "fulfillmentText": "text1",
         "fulfillmentMessages": [{
