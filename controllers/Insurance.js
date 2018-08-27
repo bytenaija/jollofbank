@@ -398,7 +398,7 @@ function travelInsurance(req, res) {
 module.exports = {
 
     insurance: (req, res) => {
-        const agent = new WebhookClient({ request: req, respons: res });
+        const agent = new WebhookClient({ request: req, response: res });
         console.dir(agent);
         let outputContexts = req.body.queryResult.outputContexts;
         //console.dir(outputContexts[outputContexts.length - 1].parameters)
