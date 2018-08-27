@@ -175,13 +175,13 @@ module.exports = {
 
                 lifeInsuranceConfirm(req, res);
                 break;
-            case 'Travel Insurance':
+            case 'travelInsurance':
                 console.log("Travel Insurance")
 
                 travelInsurance(req, res);
                 break;
 
-            case 'Car Insurance':
+            case 'carInsurance':
                 console.log("Car Insurance")
 
                 carInsurance(req, res);

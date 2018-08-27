@@ -1,93 +1,93 @@
 {
 
-"fulfillmentText": "displayed&spoken response",
+    "fulfillmentText": "displayed&spoken response",
 
-"fulfillmentMessages": [
+    "fulfillmentMessages": [
 
-{
+        {
 
-"text": [
+            "text": [
 
-"text response"
+                "text response"
 
-],
+            ],
 
-}
+        }
 
-],
+    ],
 
-"source": "example.com",
+    "source": "example.com",
 
-"payload": {
+    "payload": {
 
-"google": {
+        "google": {
 
-"expectUserResponse": true,
+            "expectUserResponse": true,
 
-"richResponse": {
+            "richResponse": {
 
-"items": [
+                "items": [
 
-{
+                    {
 
-"simpleResponse": {
+                        "simpleResponse": {
 
-"textToSpeech": "this is a simple response"
+                            "textToSpeech": "this is a simple response"
 
-}
+                        }
 
-}
+                    }
 
-]
+                ]
 
-}
+            }
 
-},
+        },
 
-"facebook": {
+        "facebook": {
 
-"text": "Hello, Facebook!"
+            "text": "Hello, Facebook!"
 
-},
+        },
 
-"slack": {
+        "slack": {
 
-"text": "This is a text response for Slack."
+            "text": "This is a text response for Slack."
 
-}
+        }
 
-},
+    },
 
-"outputContexts": [
+    "outputContexts": [
 
-{
+        {
 
-"name": "projects/${PROJECT_ID}/agent/sessions/${SESSION_ID}/contexts/context name",
+            "name": "projects/${PROJECT_ID}/agent/sessions/${SESSION_ID}/contexts/context name",
 
-"lifespanCount": 5,
+            "lifespanCount": 5,
 
-"parameters": {
+            "parameters": {
 
-"param": "param value"
+                "param": "param value"
 
-}
+            }
 
-}
+        }
 
-],
+    ],
 
-"followupEventInput": {
+    "followupEventInput": {
 
-"name": "event name",
+        "name": "event name",
 
-"languageCode": "en-US",
+        "languageCode": "en-US",
 
-"parameters": {
+        "parameters": {
 
-"param": "param value"
+            "param": "param value"
 
-}
+        }
 
-}
+    }
 
 }
