@@ -86,6 +86,12 @@ function lifeInsurance(req, res) {
 function lifeInsuranceConfirm(req, res) {
     if (req.body.queryResult.parameters.book == 'Yes') {
         res.json({
+            "queryResult": {
+                "diagnosticInfo": {
+                    "end_conversation": true
+                },
+
+            },
             "fulfillmentText": "text1",
             "fulfillmentMessages": [{
 
@@ -93,7 +99,7 @@ function lifeInsuranceConfirm(req, res) {
 
                         "text": [
 
-                            `You have purchased life insurance policy for  ${firstname} ${lastname}, ${age}, ${verb} pre-existing conditions  for ${amount} Naira per year.`
+                            `You have purchased life insurance policy for  ${firstname} ${lastname}, ${age.amount} ${age.unit}, ${verb} pre-existing conditions  for ${amount} Naira per year.`
 
                         ]
 
@@ -124,6 +130,12 @@ function lifeInsuranceConfirm(req, res) {
         })
     } else {
         res.json({
+            "queryResult": {
+                "diagnosticInfo": {
+                    "end_conversation": true
+                },
+
+            },
             "fulfillmentText": "text1",
             "fulfillmentMessages": [{
 
@@ -224,6 +236,12 @@ function carInsuranceConfirm(req, res) {
     if (req.body.queryResult.parameters.confirm == 'Yes') {
 
         res.json({
+            "queryResult": {
+                "diagnosticInfo": {
+                    "end_conversation": true
+                },
+
+            },
             "fulfillmentText": "text1",
             "fulfillmentMessages": [{
                     "platform": "FACEBOOK",
@@ -288,6 +306,12 @@ function carInsuranceConfirm(req, res) {
         })
     } else {
         res.json({
+            "queryResult": {
+                "diagnosticInfo": {
+                    "end_conversation": true
+                },
+
+            },
             "fulfillmentText": "text1",
             "fulfillmentMessages": [{
 
