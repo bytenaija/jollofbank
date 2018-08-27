@@ -27,7 +27,7 @@ function lifeInsurance(req, res) {
 
                     "text": [
 
-                        `You insurance premium for ${firsname} ${lastname}, ${age}, ${verb} pre-existing conditions is evaluated at ${amount} naira per year.`
+                        `You insurance premium for ${firstname} ${lastname}, ${age}, ${verb} pre-existing conditions is evaluated at ${amount} naira per year.`
 
                     ]
 
@@ -119,7 +119,7 @@ function lifeInsuranceConfirm(req, res) {
 
                         "text": [
 
-                            `You have declined to complete life insurance policy purchase for  ${firsname} ${lastname}, ${age}, ${verb} pre-existing conditions  for ${amount} Naira per year.`,
+                            `You have declined to complete life insurance policy purchase for  ${firstname} ${lastname}, ${age}, ${verb} pre-existing conditions  for ${amount} Naira per year.`,
 
                         ]
 
