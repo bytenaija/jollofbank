@@ -428,8 +428,8 @@ function carInsurance2(agent) {
 }
 
 
-function carInsuranceConfirm(req, res) {
-    if (req.body.queryResult.parameters.confirm == 'Yes') {
+function carInsuranceConfirm2(req, res) {
+    if (agent.parameters.confirm == 'Yes') {
         console.log('Confimation');
 
         agent.add(`We have booked your insurance. You will pay ${amount} Naira per year.`);
@@ -493,7 +493,7 @@ module.exports = {
 
         let intentMap = new Map(); // Map functions to Dialogflow intent names
         intentMap.set('Car Insurance', carInsurance2);
-        intentMap.set('Car Insurance - Confirm', carInsuranceConfirm);
+        intentMap.set('Car Insurance - Confirm', carInsuranceConfirm2);
 
         agent.handleRequest(intentMap);
     }
