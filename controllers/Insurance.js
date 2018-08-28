@@ -424,41 +424,47 @@ module.exports = {
 
     insurance: (req, res) => {
         const agent = new WebhookClient({ request: req, response: res });
-        console.dir(agent.action);
-        let outputContexts = req.body.queryResult.outputContexts;
+        //console.dir(agent.action);
+        //let outputContexts = req.body.queryResult.outputContexts;
         //console.dir(outputContexts[outputContexts.length - 1].parameters)
         //  console.dir(req.body.originalDetectIntentRequest.payload.data.sender.id);
         // console.dir(req.body.queryResult.action)
-        switch (agent.action) {
-            case 'LifeInsurance.InsuranceType':
-                // console.log("Life Insurance")
+        /*  switch (agent.action) {
+             case 'LifeInsurance.InsuranceType':
+                 // console.log("Life Insurance")
 
-                lifeInsurance2(req, res);
-                break;
-            case 'LifeInsurance.Confirm':
-                // console.log("Life Insurance Confirm")
+                 lifeInsurance2(req, res);
+                 break;
+             case 'LifeInsurance.Confirm':
+                 // console.log("Life Insurance Confirm")
 
-                lifeInsuranceConfirm2(req, res);
-                break;
-            case 'travelInsurance':
-                //console.log("Travel Insurance")
+                 lifeInsuranceConfirm2(req, res);
+                 break;
+             case 'travelInsurance':
+                 //console.log("Travel Insurance")
 
-                travelInsurance2(req, res);
-                break;
+                 travelInsurance2(req, res);
+                 break;
 
-            case 'carInsurance':
-                // console.log("Car Insurance")
+             case 'carInsurance':
+                 // console.log("Car Insurance")
 
-                carInsurance2(agent);
-                break;
+                 carInsurance2(agent);
+                 break;
 
-            case 'carInsurance.confirm':
-                // console.log("Car Insurance Confirm")
+             case 'carInsurance.confirm':
+                 // console.log("Car Insurance Confirm")
 
-                carInsuranceConfirm2(req, res);
-                break;
-        }
+                 carInsuranceConfirm2(req, res);
+                 break;
+         } */
         // lifeInsurance(req, res);
+
+        let intentMap = new Map(); // Map functions to Dialogflow intent names
+        intentMap.set('Car Insurance', carInsurance2);
+        intentMap.set('Car Insurance - Confirm', carInsuranceConfirm);
+
+        agent.handleRequest(intentMap);
     }
 
 
