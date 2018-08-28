@@ -398,6 +398,7 @@ function travelInsurance(req, res) {
 
 
 function carInsurance2(agent) {
+    console.log(agent.parameters)
     brand = agent.parameters.brand,
         year = agent.parameters.Year,
         model = agent.parameters.model,
