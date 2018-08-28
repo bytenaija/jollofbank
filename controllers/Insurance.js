@@ -415,11 +415,11 @@ function carInsurance2(agent) {
     agent.add(new Suggestion('Yes'))
     agent.add(new Suggestion('No'))
 
-    agent.setContext({
-        name: 'car insurance',
-        lifespan: 1,
-        parameters: { brand: brand, model: model, year: year, amount: amount }
-    });
+    /*  agent.setContext({
+         name: 'car insurance',
+         lifespan: 1,
+         parameters: { brand: brand, model: model, year: year, amount: amount }
+     }); */
 
 
 
