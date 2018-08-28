@@ -184,6 +184,7 @@ module.exports = {
 
     insurance: (req, res) => {
         const agent = new WebhookClient({ request: req, response: res });
+        console.log(agent.intent);
         let intentMap = new Map(); // Map functions to Dialogflow intent names
         intentMap.set('Car Insurance', carInsurance);
         intentMap.set('Car Insurance - Confirm', carInsuranceConfirm);
