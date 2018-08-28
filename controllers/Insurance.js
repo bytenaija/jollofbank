@@ -1,12 +1,10 @@
-let brand, amount, model, year, firstname, lastname, age, InsuranceType, pre, verb, from
-
-
-email,
-phonenumber,
-dateFrom,
-dateTo,
-to,
-days;
+let brand, amount, model, year, firstname, lastname, age, InsuranceType, pre, verb, from,
+    email,
+    phonenumber,
+    dateFrom,
+    dateTo,
+    to,
+    days;
 const { WebhookClient } = require('dialogflow-fulfillment');
 const { Suggestion, Card } = require('dialogflow-fulfillment');
 const dateformat = require('dateformat');
