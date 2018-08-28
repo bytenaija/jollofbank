@@ -399,25 +399,28 @@ function travelInsurance(req, res) {
 
 function carInsurance2(agent) {
     console.log(agent.parameters)
+    return new Promise((resolve, reject) => {
+        brand = agent.parameters.brand,
+            year = agent.parameters.Year,
+            model = agent.parameters.model,
+            amount = 10000;
 
-    brand = agent.parameters.brand,
-        year = agent.parameters.Year,
-        model = agent.parameters.model,
-        amount = 10000;
-
-    agent.setContext({
-        name: 'car insurance',
-        lifespan: 1,
-        parameters: { brand: brand, model: model, year: year, amount: amount }
-    });
-    agent.add(`You insurance needs for a ${year} ${brand} ${model} is evaluated at ${amount} Naira per year.`);
+        agent.setContext({
+            name: 'car insurance',
+            lifespan: 1,
+            parameters: { brand: brand, model: model, year: year, amount: amount }
+        });
+        agent.add(`You insurance needs for a ${year} ${brand} ${model} is evaluated at ${amount} Naira per year.`);
 
 
 
-    agent.add("Do you want to continue?")
+        agent.add("Do you want to continue?")
 
-    agent.add(new Suggestion('Yes'))
-    agent.add(new Suggestion('No'))
+        agent.add(new Suggestion('Yes'))
+        agent.add(new Suggestion('No'))
+        resolve()
+    })
+
 
 
 }
