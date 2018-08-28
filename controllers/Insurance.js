@@ -121,7 +121,7 @@ module.exports = {
         let intentMap = new Map(); // Map functions to Dialogflow intent names
         intentMap.set('Car Insurance', carInsurance);
         intentMap.set('Car Insurance - Confirm', carInsuranceConfirm);
-        intentMap.set('Life Insurance', lifeInsurance);
+        intentMap.set('Life Insurance - Types', lifeInsurance);
         intentMap.set('Life Insurance - Confirm', lifeInsuranceConfirm);
         intentMap.set('Travel Insurance', travelInsurance);
         intentMap.set('Travel Insurance - Confirm', travelInsuranceConfirm);
