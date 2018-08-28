@@ -405,7 +405,11 @@ function carInsurance2(agent) {
         model = agent.parameters.model,
         amount = 10000;
 
-
+    agent.setContext({
+        name: 'car insurance',
+        lifespan: 1,
+        parameters: { brand: brand, model: model, Year: year, amount: amount }
+    });
     agent.add(`You insurance needs for a ${year} ${brand} ${model} is evaluated at ${amount} Naira per year.`);
 
 
@@ -415,11 +419,7 @@ function carInsurance2(agent) {
     agent.add(new Suggestion('Yes'))
     agent.add(new Suggestion('No'))
 
-    /*  agent.setContext({
-         name: 'car insurance',
-         lifespan: 1,
-         parameters: { brand: brand, model: model, year: year, amount: amount }
-     }); */
+
 
 
 
