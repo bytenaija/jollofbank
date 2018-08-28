@@ -404,7 +404,11 @@ function carInsurance2(agent) {
         model = agent.parameters.model,
         amount = Math.floor(1000 + Math.random() * 30000);
 
-
+    agent.setContext({
+        name: 'car insurance',
+        lifespan: 1,
+        parameters: { brand: brand, model: model, year: year, amount: amount }
+    });
     agent.add(`You insurance needs for a ${year} ${brand} ${model} is evaluated at ${amount} Naira per year.`);
 
 
