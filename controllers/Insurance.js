@@ -445,7 +445,7 @@ module.exports = {
             case 'carInsurance':
                 // console.log("Car Insurance")
 
-                carInsurance2(req, res);
+                carInsurance2(agent);
                 break;
 
             case 'carInsurance.confirm':
