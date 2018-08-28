@@ -1,5 +1,6 @@
 let outputContexts, brand, amount, model, year, firstname, lastname, age, InsuranceType, pre, phoneNumber, email, verb;
 const { WebhookClient } = require('dialogflow-fulfillment');
+const { Suggestion, Card } = require('dialogflow-fulfillment')
 
 function lifeInsurance(req, res) {
     outputContexts = req.body.queryResult.outputContexts;
@@ -395,6 +396,25 @@ function travelInsurance(req, res) {
     })
 }
 
+
+function carInsurance2(agent) {
+    brand = agent.parameters.brand,
+        year = agent.parameters.Year,
+        model = agent.parameters.model,
+        amount = Math.floor(1000 + Math.random() * 30000);
+
+
+    agent.add(`You insurance needs for a ${year} ${brand} ${model} is evaluated at ${amount} Naira per year.`);
+
+
+
+    agent.add("Do you want to continue?")
+
+    agent.add(new Suggestion('Yes'))
+    agent.add(new Suggestion('No'))
+
+
+}
 module.exports = {
 
     insurance: (req, res) => {
@@ -408,29 +428,29 @@ module.exports = {
             case 'LifeInsurance.InsuranceType':
                 // console.log("Life Insurance")
 
-                lifeInsurance(req, res);
+                lifeInsurance2(req, res);
                 break;
             case 'LifeInsurance.Confirm':
                 // console.log("Life Insurance Confirm")
 
-                lifeInsuranceConfirm(req, res);
+                lifeInsuranceConfirm2(req, res);
                 break;
             case 'travelInsurance':
                 //console.log("Travel Insurance")
 
-                travelInsurance(req, res);
+                travelInsurance2(req, res);
                 break;
 
             case 'carInsurance':
                 // console.log("Car Insurance")
 
-                carInsurance(req, res);
+                carInsurance2(req, res);
                 break;
 
             case 'carInsurance.confirm':
                 // console.log("Car Insurance Confirm")
 
-                carInsuranceConfirm(req, res);
+                carInsuranceConfirm2(req, res);
                 break;
         }
         // lifeInsurance(req, res);
