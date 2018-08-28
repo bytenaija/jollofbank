@@ -180,7 +180,7 @@ module.exports = {
         intentMap.set('Life Insurance - Types', lifeInsurance);
         intentMap.set('Life Insurance.Confirm', lifeInsuranceConfirm);
         intentMap.set('Travel Insurance', travelInsurance);
-        intentMap.set('Travel Insurance - Confirm', travelInsuranceConfirm);
+        intentMap.set('Travel Insurance.Confirm', travelInsuranceConfirm);
         agent.handleRequest(intentMap);
     }
 
