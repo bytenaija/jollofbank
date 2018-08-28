@@ -50,7 +50,7 @@ function lifeInsuranceConfirm(agent) {
     } else {
 
 
-        agent.add(`You have declined to complete life insurance policy purchase for  ${firstname} ${lastname}, ${age}, ${verb} pre-existing conditions  for ${amount} Naira per year.`)
+        agent.add(`You have declined to complete life insurance policy purchase for  ${firstname} ${lastname}, ${age.amount} ${age.unit}, ${verb} pre-existing conditions  for ${amount} Naira per year.`)
 
 
         agent.add(`Our agent will follow up with you on how best we can help meet your insurance needs`)
