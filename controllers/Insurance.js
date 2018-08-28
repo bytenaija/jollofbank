@@ -38,6 +38,7 @@ function lifeInsurance(agent) {
 }
 
 function lifeInsuranceConfirm(agent) {
+    agent.clearContext("lifeinsurance-custom-followup");
     if (agent.parameters.book == 'Yes') {
 
 
@@ -46,15 +47,16 @@ function lifeInsuranceConfirm(agent) {
 
         agent.add("Thank you for your patronage.")
         agent.clearOutgoingContexts();
+        agent.clearContext("lifeinsurance-custom-followup");
 
     } else {
 
 
         agent.add(`You have declined to complete life insurance policy purchase for  ${firstname} ${lastname}, ${age.amount} ${age.unit}, ${verb} pre-existing conditions  for ${amount} Naira per year.`)
-
-
         agent.add(`Our agent will follow up with you on how best we can help meet your insurance needs`)
         agent.clearOutgoingContexts();
+        webhookClient.clearContext("lifeinsurance-custom-followup");
+
 
     }
 
@@ -62,6 +64,7 @@ function lifeInsuranceConfirm(agent) {
 
 
 function travelInsurance(agent) {
+    agent.clearContext("lifeinsurance-custom-followup");
     console.dir(agent.parameters);
     from = agent.parameters.from,
         firstname = agent.parameters.firstname,
@@ -93,6 +96,7 @@ function travelInsurance(agent) {
 }
 
 function travelInsuranceConfirm(agent) {
+    agent.clearContext("lifeinsurance-custom-followup");
     if (agent.parameters.confirm == 'Yes') {
         console.log('Confimation');
 
@@ -100,6 +104,7 @@ function travelInsuranceConfirm(agent) {
 
         agent.add("Thank you for your patronage.")
         agent.clearOutgoingContexts();
+        agent.clearContext("lifeinsurance-custom-followup");
 
     } else {
 
@@ -110,12 +115,14 @@ function travelInsuranceConfirm(agent) {
         agent.add(`Our agent will follow up with you on how best we can help meet your insurance needs`);
 
         agent.clearOutgoingContexts();
+        agent.clearContext("lifeinsurance-custom-followup");
 
 
     }
 }
 
 function carInsurance(agent) {
+    agent.clearContext("lifeinsurance-custom-followup");
     console.log(agent.parameters)
 
     brand = agent.parameters.brand,
@@ -147,6 +154,7 @@ function carInsurance(agent) {
 
 
 function carInsuranceConfirm(agent) {
+    agent.clearContext("lifeinsurance-custom-followup");
     if (agent.parameters.confirm == 'Yes') {
         console.log('Confimation');
 
@@ -154,6 +162,7 @@ function carInsuranceConfirm(agent) {
 
         agent.add("Thank you for your patronage.")
         agent.clearOutgoingContexts();
+        agent.clearContext("lifeinsurance-custom-followup");
 
     } else {
 
@@ -164,6 +173,7 @@ function carInsuranceConfirm(agent) {
         agent.add(`Our agent will follow up with you on how best we can help meet your insurance needs`);
 
         agent.clearOutgoingContexts();
+        agent.clearContext("lifeinsurance-custom-followup");
 
 
     }
