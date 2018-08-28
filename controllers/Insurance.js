@@ -1,6 +1,16 @@
-let brand, amount, model, year, firstname, lastname, age, InsuranceType, pre, phoneNumber, email, verb;
+let brand, amount, model, year, firstname, lastname, age, InsuranceType, pre, phoneNumber, email, verb, from
+firstname,
+lastname,
+email,
+phonenumber,
+dateFrom,
+dateTo,
+to,
+days;
 const { WebhookClient } = require('dialogflow-fulfillment');
-const { Suggestion, Card } = require('dialogflow-fulfillment')
+const { Suggestion, Card } = require('dialogflow-fulfillment');
+const dateformat = require('dateformat');
+const moment = require('moment');
 
 function lifeInsurance(agent) {
 
@@ -55,11 +65,56 @@ function lifeInsuranceConfirm(agent) {
 
 function travelInsurance(agent) {
     console.dir(agent.parameters);
+    from = agent.parameters.from,
+        firstname = agent.parameters.firstname,
+        lastname = agent.parameters.lastname,
+        email = agent.parameters.email,
+        phonenumber = agent.parameters.phonenumber,
+        dateFrom = dateformat(agent.parameters.dateFrom, "DD/MM/YYYY"),
+        dateTo = dateformat(agent.parameters.dateTo, "DD/MM/YYYY"),
+        to = agent.parameters.to,
+        amount = Math.floor(1000 + Math.random() * 10000);
+
+    let a = moment(dateFrom),
+        b = moment(dateTo);
+    days = Math.abs(a.diff(b, 'days')) + 1;
+
+    console.log(days);
+
+
+    agent.add(`You want travel insurance coverage for your ${days} day(s) journey starting from ${dateFrom} to ${dateTo}`)
+    agent.add(`Premium for this journey will cost you ${amount} Naira payable before ${dateFrom}.`);
+
+
+
+    agent.add("Do you want to continue?")
+
+    agent.add(new Suggestion('Yes'))
+    agent.add(new Suggestion('No'))
+
 }
 
 function travelInsuranceConfirm(agent) {
-    console.dir(agent.parameters);
-    agent.clearOutgoingContexts();
+    if (agent.parameters.confirm == 'Yes') {
+        console.log('Confimation');
+
+        agent.add(`We have booked your insurance. You will pay ${amount} Naira for this journey.`);
+
+        agent.add("Thank you for your patronage.")
+        agent.clearOutgoingContexts();
+
+    } else {
+
+
+        agent.add(`You have declined to insure your journey for ${amount} Naira per year.`)
+
+
+        agent.add(`Our agent will follow up with you on how best we can help meet your insurance needs`);
+
+        agent.clearOutgoingContexts();
+
+
+    }
 }
 
 function carInsurance(agent) {
