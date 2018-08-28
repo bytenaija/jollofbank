@@ -22,6 +22,9 @@ function lifeInsurance(agent) {
     agent.add(`You insurance premium for ${firstname} ${lastname}, ${age.amount} ${age.unit}, ${verb} pre-existing conditions is evaluated at ${amount} naira per year.`);
 
     agent.add("Do you want to continue?")
+    agent.add(new Suggestion('Yes'))
+    agent.add(new Suggestion('No'))
+
 
 
 }
