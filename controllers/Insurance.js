@@ -68,8 +68,8 @@ function travelInsurance(agent) {
         lastname = agent.parameters.lastname,
         email = agent.parameters.email,
         phonenumber = agent.parameters.phonenumber,
-        dateFrom = dateformat(agent.parameters.dateFrom, "DD/MM/YYYY"),
-        dateTo = dateformat(agent.parameters.dateTo, "DD/MM/YYYY"),
+        dateFrom = dateformat(agent.parameters.dateFrom, "dd/mm/yyyy"),
+        dateTo = dateformat(agent.parameters.dateTo, "dd/mm/yyyy"),
         to = agent.parameters.to,
         amount = Math.floor(1000 + Math.random() * 10000);
 
