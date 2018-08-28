@@ -73,8 +73,8 @@ function travelInsurance(agent) {
         to = agent.parameters.to,
         amount = Math.floor(1000 + Math.random() * 10000);
 
-    let a = moment(dateFrom),
-        b = moment(dateTo);
+    let a = moment([agent.parameters.dateFrom]),
+        b = moment([agent.parameters.dateTo]);
     days = Math.abs(a.diff(b, 'days')) + 1;
 
     console.log(days);
