@@ -431,75 +431,12 @@ function carInsurance2(agent) {
 function carInsuranceConfirm(req, res) {
     if (req.body.queryResult.parameters.confirm == 'Yes') {
         console.log('Confimation');
-        res.json({
-            "queryResult": {
-                "diagnosticInfo": {
-                    "end_conversation": true
-                },
 
-            },
-            "fulfillmentText": "text1",
-            "fulfillmentMessages": [{
-                    "platform": "FACEBOOK",
-                    "text": {
+        agent.add(`We have booked your insurance. You will pay ${amount} Naira per year.`);
 
-                        "text": [
+        agent.add("Thank you for your patronage.")
+        agent.clearOutgoingContexts();
 
-                            `We have booked your insurance. You will pay ${amount} Naira per year.`
-
-                        ]
-
-                    }
-                },
-
-                {
-                    "platform": "FACEBOOK",
-                    "text": {
-
-                        "text": [
-
-                            "Thank you for your patronage."
-
-                        ]
-
-                    }
-                },
-                {
-
-                    "text": {
-
-                        "text": [
-
-                            `We have booked your  insurance. You will pay ${amount} Naira per year.`
-
-                        ]
-
-                    }
-                },
-
-                {
-
-                    "text": {
-
-                        "text": [
-
-                            "Thank you for your patronage."
-
-                        ]
-
-                    }
-                },
-
-
-            ],
-            "source": "RepInBot",
-            "outputContexts": [{
-                name: req.body.queryResult.outputContexts[0].name,
-                "lifespanCount": 0,
-
-                "parameters": {}
-            }]
-        })
     } else {
 
 
