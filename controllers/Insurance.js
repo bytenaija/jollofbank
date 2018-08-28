@@ -428,7 +428,7 @@ function carInsurance2(agent) {
 }
 
 
-function carInsuranceConfirm2(req, res) {
+function carInsuranceConfirm2(agent) {
     if (agent.parameters.confirm == 'Yes') {
         console.log('Confimation');
 
