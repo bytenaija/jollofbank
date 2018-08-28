@@ -1,6 +1,6 @@
-let brand, amount, model, year, firstname, lastname, age, InsuranceType, pre, phoneNumber, email, verb, from
-firstname,
-lastname,
+let brand, amount, model, year, firstname, lastname, age, InsuranceType, pre, verb, from
+
+
 email,
 phonenumber,
 dateFrom,
