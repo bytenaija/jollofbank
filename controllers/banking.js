@@ -4,6 +4,23 @@ const { Suggestion, Card } = require('dialogflow-fulfillment');
 const dateformat = require('dateformat');
 const moment = require('moment');
 
+
+module.exports = {
+
+    banking: (req, res) => {
+        const agent = new WebhookClient({ request: req, response: res });
+        // console.log(agent.intent);
+        let intentMap = new Map(); // Map functions to Dialogflow intent names
+        intentMap.set('Banking', USSD);
+        intentMap.set('Confirm', confirm);
+        intentMap.set('Welcome', welcome);
+        agent.handleRequest(intentMap);
+    }
+
+
+}
+
+
 function USSD(agent) {
 
     console.dir("This is it now",
@@ -12,7 +29,59 @@ function USSD(agent) {
     currentChoice = agent.choice;
 
 
+    switch (currentChoice) {
+        case 1:
+            accountBalance(agent);
+            break;
 
+        case 2:
+            rewards(agent);
+            break;
+
+        case 3:
+            recentTransactions(agent);
+            break;
+
+        case 4:
+            airtime(agent);
+            break;
+
+        case 5:
+
+
+
+            data(agent);
+
+            break;
+
+        case 6:
+            smsBundle(agent);
+
+            break;
+
+        case 7:
+            makePayment(agent);
+
+            break;
+
+        case 8:
+            buyElectricity(agent);
+            break;
+
+        case 9:
+            statement(agent);
+
+
+            break;
+
+        case 10:
+            help(agent);
+            break;
+
+        case 11:
+            faqs(agent);
+            break;
+    }
     agent.add("Enter 99 to continue or 0 otherwise")
     agent.add(new Suggestion('99'))
     agent.add(new Suggestion('0'))
@@ -20,6 +89,9 @@ function USSD(agent) {
 
 
 }
+
+
+
 
 function welcome(agent) {
     agent.add("Welcome to RedPages Bank. What do you want to do today?");
@@ -58,18 +130,49 @@ function confirm(agent) {
     }
 }
 
+function accountBalance(agent) {
+    agent.add("You can retrieve your account balance from here")
+}
 
-module.exports = {
-
-    banking: (req, res) => {
-        const agent = new WebhookClient({ request: req, response: res });
-        // console.log(agent.intent);
-        let intentMap = new Map(); // Map functions to Dialogflow intent names
-        intentMap.set('Banking', USSD);
-        intentMap.set('Confirm', confirm);
-        intentMap.set('Welcome', welcome);
-        agent.handleRequest(intentMap);
-    }
+function rewards(agent) {
+    agent.add("You get so much rewards here, you will be tired of rewards")
+}
 
 
+
+function recentTransactions(agent) {
+    agent.add("Recent transactions will be retrieved here")
+}
+
+
+function airtime(agent) {
+    agent.add("Airtime purchase will be implemented here")
+}
+
+function data(agent) {
+    agent.add("Data Purchase goes here")
+}
+
+function smsBundle(agent) {
+    agent.add("SMS Bundle purchase goes here")
+}
+
+function makePayment(agent) {
+    agent.add("Making payments will be implemented here")
+}
+
+function buyElectricity(agent) {
+    agent.add("Electricity purchase will be implemented here")
+}
+
+function statement(agent) {
+    agent.add("Mini statement goes here")
+}
+
+function help(agent) {
+    welcome(agent);
+}
+
+function faqs(agent) {
+    agent.add("FAQs and Terms and Conditions goes here")
 }
