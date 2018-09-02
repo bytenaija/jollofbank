@@ -73,6 +73,7 @@ function USSD(agent) {
 
 
     currentChoice = agent.choice;
+    console.log(currentChoice);
 
 
     switch (currentChoice) {
