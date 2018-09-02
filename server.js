@@ -11,6 +11,7 @@ let InsuranceController = require('./controllers/Insurance');
 
 
 app.post('/travel', InsuranceController.insurance)
+app.post('/ussd', InsuranceController.banking)
 
 
 
