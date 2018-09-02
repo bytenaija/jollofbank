@@ -35,14 +35,10 @@ function confirm(agent) {
 
     } else {
 
-
-        agent.add(`You have declined to insure your ${year} ${brand} ${model} for ${amount} Naira per year.`)
-
-
-        agent.add(`Our agent will follow up with you on how best we can help meet your insurance needs`);
+        agent.add(`Our agent will follow up with you on how best we can help meet your banking needs`);
 
         agent.clearOutgoingContexts();
-        agent.clearContext("lifeinsurance-custom-followup");
+
 
 
     }
