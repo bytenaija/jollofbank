@@ -13,9 +13,9 @@ function USSD(agent) {
 
 
 
-    agent.add("Do you want to continue?")
-    agent.add(new Suggestion('Yes'))
-    agent.add(new Suggestion('No'))
+    agent.add("Enter 99 to continue or 0 otherwise")
+    agent.add(new Suggestion('99'))
+    agent.add(new Suggestion('0'))
 
 
 
