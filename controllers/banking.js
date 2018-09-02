@@ -82,11 +82,6 @@ function USSD(agent) {
             faqs(agent);
             break;
     }
-    agent.add("Enter 99 to continue or 0 otherwise")
-    agent.add(new Suggestion('99'))
-    agent.add(new Suggestion('0'))
-
-
 
 }
 
