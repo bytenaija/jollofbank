@@ -56,7 +56,7 @@ module.exports = {
         console.log(agent.intent);
         let intentMap = new Map(); // Map functions to Dialogflow intent names
         intentMap.set('Banking', USSD);
-        intentMap.set('Confirm', confim);
+        intentMap.set('Confirm', confirm);
 
         agent.handleRequest(intentMap);
     }
