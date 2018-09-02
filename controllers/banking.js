@@ -21,6 +21,20 @@ function USSD(agent) {
 
 }
 
+function welcome(agent) {
+    agent.add("Welcome to RedPages Bank. What do you want to do today?");
+    agent.add(" 1. See my account balances");
+    agent.add("2. See my RedPages Rewards");
+    agent.add("3. See my recent transactions");
+    agent.add("4. Buy Airtime");
+    agent.add("5. Buy Data");
+    agent.add("6. Buy an SMS bundle");
+    agent.add("7. Make a Payment");
+    agent.add("8. Buy PrePaid Electricity");
+    agent.add("9. Get a mini statement");
+    agent.add("10. Get help with ChatBanking");
+    agent.add("11. FAQs and Terms and Conditions");
+}
 
 function confirm(agent) {
     let confirm = agent.parameters.confirm == 99 ? 'Yes' : 'No';
@@ -53,7 +67,7 @@ module.exports = {
         let intentMap = new Map(); // Map functions to Dialogflow intent names
         intentMap.set('Banking', USSD);
         intentMap.set('Confirm', confirm);
-
+        intentMap.set('Welcome', welcome);
         agent.handleRequest(intentMap);
     }
 
