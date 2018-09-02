@@ -23,14 +23,14 @@ module.exports = {
 
 function USSD(agent) {
 
-    console.dir("This is it now",
-        agent.parameters)
 
     currentChoice = agent.choice;
 
 
     switch (currentChoice) {
+
         case 1:
+            console.log(currentChoice);
             accountBalance(agent);
             break;
 
