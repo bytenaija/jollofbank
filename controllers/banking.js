@@ -23,15 +23,15 @@ function USSD(agent) {
 
 
 function confirm(agent) {
-    let confirm = agent.parameters.confirm == 0 ? 'Yes' : 'No';
+    let confirm = agent.parameters.confirm == 99 ? 'Yes' : 'No';
     if (confirm == 'Yes') {
         console.log('Confimation');
 
-        agent.add(`We have booked your insurance. You will pay ${amount} Naira per year.`);
+
 
         agent.add("Thank you for your patronage.")
         agent.clearOutgoingContexts();
-        agent.clearContext("lifeinsurance-custom-followup");
+
 
     } else {
 
