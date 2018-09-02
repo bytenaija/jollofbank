@@ -21,6 +21,54 @@ module.exports = {
 }
 
 
+function accountBalance(agent) {
+    console.dir(agent)
+    agent.add("You can retrieve your account balance from here")
+}
+
+function rewards(agent) {
+    agent.add("You get so much rewards here, you will be tired of rewards")
+}
+
+
+
+function recentTransactions(agent) {
+    agent.add("Recent transactions will be retrieved here")
+}
+
+
+function airtime(agent) {
+    agent.add("Airtime purchase will be implemented here")
+}
+
+function data(agent) {
+    agent.add("Data Purchase goes here")
+}
+
+function smsBundle(agent) {
+    agent.add("SMS Bundle purchase goes here")
+}
+
+function makePayment(agent) {
+    agent.add("Making payments will be implemented here")
+}
+
+function buyElectricity(agent) {
+    agent.add("Electricity purchase will be implemented here")
+}
+
+function statement(agent) {
+    agent.add("Mini statement goes here")
+}
+
+function help(agent) {
+    welcome(agent);
+}
+
+function faqs(agent) {
+    agent.add("FAQs and Terms and Conditions goes here")
+}
+
 function USSD(agent) {
 
 
@@ -123,51 +171,4 @@ function confirm(agent) {
 
 
     }
-}
-
-function accountBalance(agent) {
-    agent.add("You can retrieve your account balance from here")
-}
-
-function rewards(agent) {
-    agent.add("You get so much rewards here, you will be tired of rewards")
-}
-
-
-
-function recentTransactions(agent) {
-    agent.add("Recent transactions will be retrieved here")
-}
-
-
-function airtime(agent) {
-    agent.add("Airtime purchase will be implemented here")
-}
-
-function data(agent) {
-    agent.add("Data Purchase goes here")
-}
-
-function smsBundle(agent) {
-    agent.add("SMS Bundle purchase goes here")
-}
-
-function makePayment(agent) {
-    agent.add("Making payments will be implemented here")
-}
-
-function buyElectricity(agent) {
-    agent.add("Electricity purchase will be implemented here")
-}
-
-function statement(agent) {
-    agent.add("Mini statement goes here")
-}
-
-function help(agent) {
-    welcome(agent);
-}
-
-function faqs(agent) {
-    agent.add("FAQs and Terms and Conditions goes here")
 }
