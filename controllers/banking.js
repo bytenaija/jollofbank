@@ -49,7 +49,7 @@ module.exports = {
 
     banking: (req, res) => {
         const agent = new WebhookClient({ request: req, response: res });
-        console.log(agent.intent);
+        // console.log(agent.intent);
         let intentMap = new Map(); // Map functions to Dialogflow intent names
         intentMap.set('Banking', USSD);
         intentMap.set('Confirm', confirm);
