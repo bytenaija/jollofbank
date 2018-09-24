@@ -1,24 +1,8 @@
-let currentChoice, previousChoice;
+let currentChoice, previousChoice , agent;
 const { WebhookClient } = require('dialogflow-fulfillment');
 const { Suggestion, Card } = require('dialogflow-fulfillment');
 const dateformat = require('dateformat');
 const moment = require('moment');
-
-
-module.exports = {
-
-    banking: (req, res) => {
-        const agent = new WebhookClient({ request: req, response: res });
-        // console.log(agent.intent);
-        let intentMap = new Map(); // Map functions to Dialogflow intent names
-        intentMap.set('Banking', USSD);
-        intentMap.set('Confirm', confirm);
-        intentMap.set('Welcome', welcome);
-        agent.handleRequest(intentMap);
-    }
-
-
-}
 
 
 function accountBalance(agent) {
@@ -70,9 +54,10 @@ function faqs(agent) {
 }
 
 function USSD(agent) {
-
+agent = agent;
 
     currentChoice = agent.choice;
+    currentChoice = Number(currentChoice);
     console.log(currentChoice);
 
 
