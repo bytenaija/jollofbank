@@ -167,7 +167,7 @@ module.exports = {
         const agent = new WebhookClient({ request: req, response: res });
         console.log(agent.intent);
         let intentMap = new Map(); // Map functions to Dialogflow intent names
-        intentMap.set('Banking', banking);
+        intentMap.set('Banking', USSD);
         intentMap.set('Confirm', confirm);
         intentMap.set('Welcome', welcome);
         agent.handleRequest(intentMap);
