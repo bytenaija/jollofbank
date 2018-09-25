@@ -155,12 +155,8 @@ function confirm(agent) {
 
 
     } else {
-
-        agent.add(`Our agent will follow up with you on how best we can help meet your banking needs`);
-
         agent.clearOutgoingContexts();
-
-
+        welcome(agent);
 
     }
 }
