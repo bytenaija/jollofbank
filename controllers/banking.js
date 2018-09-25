@@ -57,7 +57,7 @@ function faqs(agent) {
 function USSD(agent) {
 agent = agent;
 
-    currentChoice = agent.choice;
+    currentChoice = agent.parameters.choice;
     currentChoice = Number(currentChoice);
     console.log(currentChoice);
 
