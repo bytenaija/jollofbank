@@ -28,7 +28,7 @@ function recentTransactions(agent) {
 
 
 function airtime(agent) {
-    agent.add("Airtime purchase will be implemented her")
+    agent.add("Airtime purchase will be implemented here")
 }
 
 function data(agent) {
