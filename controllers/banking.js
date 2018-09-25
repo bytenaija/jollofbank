@@ -7,6 +7,7 @@ const moment = require('moment');
 
 function accountBalance(agent) {
     console.dir(agent)
+    const userId = agent;
     agent.add("You can retrieve your account balance from here")
 }
 
