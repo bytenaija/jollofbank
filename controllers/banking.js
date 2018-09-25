@@ -8,17 +8,22 @@ const moment = require('moment');
 function accountBalance(agent) {
     console.dir(agent)
     const userId = agent;
-    agent.add("You can retrieve your account balance from here")
+    agent.add("You have two account with us.")
+    agent.add("Your savings account balance is NGN 506, 000")
+    agent.add("Your current account balance is NGN 1, 098, 000")
 }
 
 function rewards(agent) {
-    agent.add("You get so much rewards here, you will be tired of rewards")
+    agent.add("Get a chance for an all expense paid trip to Dubai if you spend minimum of NGN 300, 000 in six days")
 }
 
 
 
 function recentTransactions(agent) {
-    agent.add("Recent transactions will be retrieved here")
+    agent.add("The three more recent transactions are:")
+    agent.add("D&G purse purchased from Dolce & Gabana premium stores in South Africa for NGN 200, 000 on Monday, 27th August 2018");
+    agent.add("Payment to taxify on September 4, 2017 for NGN 1500")
+    agent.add("Airtime purchase for 090865677446 on September 19, 2018 for NGN 5,000")
 }
 
 
