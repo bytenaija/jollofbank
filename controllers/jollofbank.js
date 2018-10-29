@@ -8,7 +8,7 @@ function rechargePhone(agent) {
 }
 
 function openAccount(agent) {
-    
+    agent.add("Your account have been successfully created")
 }
 
 function transferFunds(agent) {
