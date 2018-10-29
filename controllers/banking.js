@@ -6,7 +6,7 @@ const moment = require('moment');
 
 
 function accountBalance(agent) {
-    console.dir(agent)
+    console.dir(agent.client)
     const userId = agent;
     agent.add("You have two account with us.")
     agent.add("Your savings account balance is NGN 506, 000")
@@ -146,15 +146,56 @@ function welcome(agent) {
 function confirm(agent) {
     let confirm = agent.parameters.confirm == 99 ? 'Yes' : 'No';
     if (confirm == 'Yes') {
-        console.log('Confimation');
+        switch (currentChoice) {
 
-
-
-        agent.add("Thank you for your patronage.")
-        agent.clearOutgoingContexts();
-
-
+            case 1:
+                
+                accountBalanceConfirm(agent);
+                break;
+    
+            case 2:
+                rewardsConfirm(agent);
+                break;
+    
+            case 3:
+                recentTransactionsConfirm(agent);
+                break;
+    
+            case 4:
+                airtimeConfirm(agent);
+                break;
+    
+            case 5:
+    
+    
+    
+                dataConfirm(agent);
+    
+                break;
+    
+            case 6:
+                smsBundleConfirm(agent);
+    
+                break;
+    
+            case 7:
+                makePaymentConfirm(agent);
+    
+                break;
+    
+            case 8:
+                buyElectricityConfirm(agent);
+                break;
+    
+            case 9:
+                statementConfirm(agent);
+    
+    
+                break;
+    
+                    }
     } else {
+        currentChoice = null;
         agent.clearOutgoingContexts();
         welcome(agent);
 
