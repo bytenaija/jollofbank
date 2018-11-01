@@ -16,17 +16,15 @@ function rechargePhone(agent) {
 }
 
 function openAccount(agent) {
+    let {parameters} = agent;
     let accountNumber = "044" + Math.floor(1000000 + Math.random() * 9000000);;
             if (accountNumber.length > 10) {
                 accountNumber = accountNumber.substr(0, 10);
             }
             let data = {};
             data.userId = uuidv4();
-            data.phoneNumber = memory.phoneNumber.raw
-            data.accountType = memory.accountType.raw
-            data.dob = dateformat(new Date(memory.dob.raw), "dd/mm/yyyy")
-            data.address = memory.address.raw
-            data.bvn = memory.bvn.value
+            data.accountType = parameters.accountType
+            data.bvn = parameters.bvn.value
             data.accountNumber = accountNumber;
 
             //console.dir(data);
@@ -44,7 +42,7 @@ function openAccount(agent) {
 
                 doc.end()
 
-                let fileUrl = `https://bfa6e387.ngrok.io/public/account/${filename}`;
+                let fileUrl = `https://repinbot.herokuapp.com/public/account/${filename}`;
                agent.add("Your account have been opened successfully")
 
                agent.add(`Your account Number ends with ${accountNumber.substring(6)}`)

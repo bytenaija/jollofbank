@@ -9,7 +9,9 @@ app.use(express.urlencoded({ extended: false }));
 const db = require('./db');
 let JollofBankController = require('./controllers/jollofbank');
 app.post('/jollofbank', JollofBankController.banking)
-
+app.get('/public/account/:filename', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'account', req.params.filename));
+})
 
 let InsuranceController = require('./controllers/Insurance');
 let BankingController = require('./controllers/banking');
