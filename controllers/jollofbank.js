@@ -10,12 +10,37 @@ function miniStatement(agent) {
     
 }
 
+function accountBalance(agent){
+    const userId = conversation._request.message.channelConversation.userId;
+        const accountType = conversation.properties().accountType;
+
+        conversation.logger().info('BalanceRetrieval: getting balance for account type=' + accountType);
+        Account.findOne({ userId: userId, accountType: accountType }).then(account => {
+            
+            if (account) {
+                AccountBalance.findOne({ accountId: account._id }).then(balance => {
+        
+                    agent.add('The balance in your ' + accountType + ' account (' + account.accountNumber + ') is NGN' + String(balance.balance));
+                   
+
+                })
+
+               
+            } else {
+               
+                agent.add('Sorry, you don\'t have a ' + accountType + ' account!' );
+               
+
+            }
+        })
+}
 
 function rechargePhone(agent) {
     
 }
 
 function openAccount(agent) {
+    console.dir(agent)
     let {parameters} = agent;
     let accountNumber = "044" + Math.floor(1000000 + Math.random() * 9000000);;
             if (accountNumber.length > 10) {
@@ -24,6 +49,7 @@ function openAccount(agent) {
             let data = {};
             data.userId = uuidv4();
             data.accountType = parameters.accountType
+            data.email = parameters.email
             data.bvn = parameters.bvn.value
             data.accountNumber = accountNumber;
 
@@ -64,6 +90,7 @@ module.exports = {
         intentMap.set('Transfer', transferFunds);
         intentMap.set('Transactions', miniStatement);
         intentMap.set('Airtime', rechargePhone);
+        intentMap.set('Account Balance', accountBalance);
         agent.handleRequest(intentMap);
     }
 
