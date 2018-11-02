@@ -53,6 +53,7 @@ function openAccount(agent) {
             data.accountType = agent.parameters.accountType
             data.email = agent.parameters.email
             data.bvn = agent.parameters.bvn
+            data.name = agent.parameters.name
             data.accountNumber = accountNumber;
 
             //console.dir(data);
