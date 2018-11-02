@@ -2,15 +2,29 @@ const dateformat = require('dateformat');
 const pdf = require('pdfjs')
 const uuidv4 = require('uuid/v4');
 const fs = require('fs');
+const moment = require('moment');
 const path = require('path');
 const Account = require('../models/Account');
 const AccountBalance = require('../models/AccountBalance');
 const User = require('../models/user');
 const Transaction = require('../models/Transaction');
-const { WebhookClient } = require('dialogflow-fulfillment')
+const { WebhookClient, Card } = require('dialogflow-fulfillment')
 
 function miniStatement(agent) {
+return new Promise((resolve, reject)=>{
+Transaction.find({accountId: context.paramenters.accountId}, {sort: {'date': -1}, limit: 3}).then(transactions =>{
+    if(transactions.length > 0){
+        transactions.forEach(transaction =>{
+            agent.add(new Card({
+                title: "Transactions",
+                text: `${transaction.description} on ${moment(transaction.createdAt).format("DD-MM-YYYY")}`
+            }))
+        })
 
+        resolve(agent);
+    }
+})
+})
 }
 
 function accountBalance(agent) {
