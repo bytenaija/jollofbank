@@ -43,6 +43,7 @@ function rechargePhone(agent) {
        return context.name === 'user-info';
    })
 
+   console.log(context);
 //    context.parameters
     agent.add(`Recharge card of ${agent.parameters.amount} has been successfully purchased ${agent.parameters.phoneNo}`);
 }
