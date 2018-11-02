@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const Account = require('../models/Account');
 const AccountBalance = require('../models/AccountBalance');
+const User = require('../models/user');
 const {WebhookClient} = require('dialogflow-fulfillment')
 
 function miniStatement(agent) {
@@ -37,24 +38,22 @@ function accountBalance(agent){
 }
 
 function rechargePhone(agent) {
-    console.log(agent);
+    console.log(agent.contexts);
     agent.add(`Recharge card of ${agent.parameters.amount} has been successfully purchased ${agent.parameters.phoneNo}`);
 }
 
 function openAccount(agent) {
     console.dir(agent)
     return new Promise((resolve, reject)=>{
-
+    User.create({'email': agent.parameters.email, 'name' : agent.parameters.name, 'bvn': agent.parameters.bvn}).then(user =>{
+    
     let accountNumber = "044" + Math.floor(1000000 + Math.random() * 9000000);;
             if (accountNumber.length > 10) {
                 accountNumber = accountNumber.substr(0, 10);
             }
             let data = {};
-            data.userId = uuidv4();
+            data.userId = user._id;
             data.accountType = agent.parameters.accountType
-            data.email = agent.parameters.email
-            data.bvn = agent.parameters.bvn
-            data.name = agent.parameters.name
             data.accountNumber = accountNumber;
 
             //console.dir(data);
@@ -77,14 +76,15 @@ function openAccount(agent) {
                 // let fileUrl = `https://repinbot.herokuapp.com/public/account/${filename}`;
              
                agent.add(`Your account have been opened successfully. Your account Number is ${accountNumber}`)
-               const context = {'name': "user-info", 'lifespan': 20, 'parameters' : {accountNumber, 'userId': account.userId} };
+               const context = {'name': "user-info", 'lifespan': 20, 'parameters' : {'accountId': account._Id, 'userId': account.userId} };
                
               agent.setContext(context)
                 //agent.add(`Download this file to get you full account number ${fileUrl}`)
                 resolve(agent)
                 })
             })
-
+                
+    })
            
         })
 }
