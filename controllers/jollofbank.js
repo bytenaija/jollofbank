@@ -26,10 +26,7 @@ Transaction.find({accountId: context.parameters.accountId}).then(transactions =>
     console.log("transactions", transactions)
     if(transactions.length > 0){
         transactions.forEach(transaction =>{
-            agent.add(new Card({
-                title: "Transactions",
-                text: `${transaction.description} on ${moment(transaction.createdAt).format("DD-MM-YYYY")}`
-            }))
+            agent.add( `${transaction.description} on ${moment(transaction.createdAt).format("DD-MM-YYYY")}`)
         })
 
         resolve(agent);
