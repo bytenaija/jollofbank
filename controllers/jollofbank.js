@@ -51,6 +51,7 @@ function rechargePhone(agent) {
             context = context[0];
             AccountBalance.find({ accountId: context.parameters.accountId }).then(account => {
                 if (account) {
+                    console.log('Account balance', account)
                     if (account.balance >= agent.parameters.amount) {
                         Transaction.create({ accountId: account.accountId, description: `Purchase of NGN ${agent.parameters.amount} for ${agent.parameters.phoneNo}`, amount: agent.parameters.amount }).then(transaction => {
                             agent.add(`Airtime of ${agent.parameters.amount} has been successfully purchased for ${agent.parameters.phoneNo}`);
