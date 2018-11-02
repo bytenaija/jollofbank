@@ -48,13 +48,11 @@ function rechargePhone(agent) {
      
         if (context.length !== 0) {
             context = context[0];
-           AccountBalance.findOne({ accountId: context.parameters.accountId }).then(account => {
+           return AccountBalance.findOne({ accountId: context.parameters.accountId }).then(account => {
                 if (account) {
                     console.log('Account balance', account)
                     if (account.balance >= agent.parameters.amount) {
-
-                        console.log(account.balance >= agent.parameters.amount);
-                      Transaction.create({ accountId: account.accountId, description: `Purchase of NGN ${agent.parameters.amount} for ${agent.parameters.phoneNo}`, amount: agent.parameters.amount }).then(transaction => {
+                      return Transaction.create({ accountId: account.accountId, description: `Purchase of NGN ${agent.parameters.amount} for ${agent.parameters.phoneNo}`, amount: agent.parameters.amount }).then(transaction => {
                             agent.add(`Airtime of ${agent.parameters.amount} has been successfully purchased for ${agent.parameters.phoneNo}`);
                             resolve(agent)
                         });
@@ -62,7 +60,6 @@ function rechargePhone(agent) {
                         // agent.add(`Airtime of ${agent.parameters.amount} has been successfully purchased for ${agent.parameters.phoneNo}`);
                         // resolve(agent)
                     } else {
-                        console.log(account.balance >= agent.parameters.amount);
                         agent.add(`You do not have sufficient amount in your account to complete this transaction`);
                         resolve(agent)
                     }
