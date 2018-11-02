@@ -76,6 +76,7 @@ function openAccount(agent) {
                agent.add("Your account have been opened successfully")
 
                agent.add(`Your account Number is ${accountNumber}`)
+               return Promise.resolve()
                 //agent.add(`Download this file to get you full account number ${fileUrl}`)
             })
 }
