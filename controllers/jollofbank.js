@@ -37,7 +37,8 @@ function accountBalance(agent){
 }
 
 function rechargePhone(agent) {
-    
+    console.log(JSON.stringify(agent));
+    agent.add(`Recharge card of ${agent.parameters.amount} has been ${agent.parameters.phoneNo}`);
 }
 
 function openAccount(agent) {
