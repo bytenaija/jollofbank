@@ -59,6 +59,7 @@ function openAccount(agent) {
             //console.dir(data);
             Account.create(data).then(account => {
                 let accountNumber = account.accountNumber;
+                console.log(JSON.stringify(account))
                 // const doc = new pdf.Document({
                 //     font: require('pdfjs/font/Helvetica'),
                 //     padding: 100
