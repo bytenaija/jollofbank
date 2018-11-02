@@ -29,6 +29,7 @@ Transaction.find({accountId: context.parameters.accountId}).then(transactions =>
         let t = ''
         transactions.forEach(transaction =>{
             t += `${count}) => ${transaction.description} on ${moment(transaction.createdAt).format("DD-MM-YYYY")} \r\n`
+            count++;
         })
         agent.add(t);
         resolve(agent);
