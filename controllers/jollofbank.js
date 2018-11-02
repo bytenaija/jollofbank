@@ -12,6 +12,14 @@ const { WebhookClient, Card } = require('dialogflow-fulfillment')
 
 function miniStatement(agent) {
 return new Promise((resolve, reject)=>{
+    
+    let context = agent.contexts.filter(context => {
+        return context.name === 'user-info';
+    })
+
+ 
+    if (context.length !== 0) {
+        context = context[0];
 Transaction.find({accountId: context.paramenters.accountId}, {sort: {'date': -1}, limit: 3}).then(transactions =>{
     if(transactions.length > 0){
         transactions.forEach(transaction =>{
