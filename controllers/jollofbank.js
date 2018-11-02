@@ -57,7 +57,7 @@ function openAccount(agent) {
             data.accountNumber = accountNumber;
 
             //console.dir(data);
-            Account.create(data).then(account => {
+           return Account.create(data).then(account => {
                 let accountNumber = account.accountNumber;
                 console.log(JSON.stringify(account))
                 // const doc = new pdf.Document({
