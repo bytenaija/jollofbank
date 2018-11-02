@@ -25,9 +25,10 @@ return new Promise((resolve, reject)=>{
 Transaction.find({accountId: context.parameters.accountId}).then(transactions =>{
     console.log("transactions", transactions)
     if(transactions.length > 0){
+        let count = 1;
         let t = ''
         transactions.forEach(transaction =>{
-            t += `${transaction.description} on ${moment(transaction.createdAt).format("DD-MM-YYYY")} \r\n`
+            t += `${count}) => ${transaction.description} on ${moment(transaction.createdAt).format("DD-MM-YYYY")} \r\n`
         })
         agent.add(t);
         resolve(agent);
