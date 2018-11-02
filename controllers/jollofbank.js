@@ -13,6 +13,7 @@ const { WebhookClient, Card } = require('dialogflow-fulfillment')
 function miniStatement(agent) {
     console.log('transactions')
 return new Promise((resolve, reject)=>{
+    console.log(agent.contexts);
     let context = agent.contexts.filter(context => {
         return context.name === 'user-info';
     })
@@ -61,6 +62,29 @@ function accountBalance(agent) {
 
         }
     })
+}
+
+function login(agent){
+    return new Promise((resolve, reject) => {
+    User.findOne({ email: agent.parameters.email }).then(user => {
+        console.log("user", user)
+        if (user) {
+            Account.findOne({ userId: userId}).then(account =>{
+                agent.add("You have successfully logged in")
+                const context = { 'name': "user-info", 'lifespan': 200, 'parameters': { 'accountId': account._id, 'userId': account.userId } };
+
+                agent.setContext(context)
+                //agent.add(`Download this file to get you full account number ${fileUrl}`)
+                resolve(agent)
+            })
+        }else{
+            agent.add("Your login information is not correct. Try Again!")
+            resolve(agent)
+        }
+    })
+
+})
+
 }
 
 function rechargePhone(agent) {
@@ -143,7 +167,7 @@ function openAccount(agent) {
                         // let fileUrl = `https://repinbot.herokuapp.com/public/account/${filename}`;
 
                         agent.add(`Your account have been opened successfully. Your account Number is ${accountNumber}`)
-                        const context = { 'name': "user-info", 'lifespan': 20, 'parameters': { 'accountId': account._id, 'userId': account.userId } };
+                        const context = { 'name': "user-info", 'lifespan': 200, 'parameters': { 'accountId': account._id, 'userId': account.userId } };
 
                         agent.setContext(context)
                         //agent.add(`Download this file to get you full account number ${fileUrl}`)
@@ -210,6 +234,7 @@ module.exports = {
                 console.log(agent.intent);
                 let intentMap = new Map(); // Map functions to Dialogflow intent names
                 intentMap.set('Account Opening', openAccount);
+                intentMap.set('login', login);
                 intentMap.set('Transfer', transferFunds);
                 intentMap.set('Transactions', miniStatement);
                 intentMap.set('Airtime', rechargePhone);
