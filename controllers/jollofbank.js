@@ -45,8 +45,7 @@ function rechargePhone(agent) {
             return context.name === 'user-info';
         })
 
-       
-        console.log("Context", context);
+     
         if (context.length !== 0) {
             context = context[0];
             AccountBalance.findOne({ accountId: context.parameters.accountId }).then(account => {
@@ -70,6 +69,8 @@ function rechargePhone(agent) {
             agent.add(`It seems you may not have an account with us. Please open an account before trying this transaction`);
             resolve(agent)
         }
+
+        resolve(agent)
     })
 }
 
