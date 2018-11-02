@@ -59,19 +59,19 @@ function openAccount(agent) {
             //console.dir(data);
             Account.create(data).then(account => {
                 let accountNumber = account.accountNumber;
-                const doc = new pdf.Document({
-                    font: require('pdfjs/font/Helvetica'),
-                    padding: 100
-                })
-                let filename = uuidv4() + ".pdf";
-                // console.dir(filename)
-                doc.pipe(fs.createWriteStream(path.join(__dirname, "../", "public", 'account', filename)));
-                doc
-                    .text(accountNumber, 100, 100)
+                // const doc = new pdf.Document({
+                //     font: require('pdfjs/font/Helvetica'),
+                //     padding: 100
+                // })
+                // let filename = uuidv4() + ".pdf";
+                // // console.dir(filename)
+                // doc.pipe(fs.createWriteStream(path.join(__dirname, "../", "public", 'account', filename)));
+                // doc
+                //     .text(accountNumber, 100, 100)
 
-                doc.end()
+                // doc.end()
 
-                let fileUrl = `https://repinbot.herokuapp.com/public/account/${filename}`;
+                // let fileUrl = `https://repinbot.herokuapp.com/public/account/${filename}`;
                agent.add("Your account have been opened successfully")
 
                agent.add(`Your account Number ends with ${accountNumber.substring(6)}`)
