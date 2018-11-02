@@ -44,8 +44,6 @@ function openAccount(agent) {
     console.dir(agent)
     return new Promise((resolve, reject)=>{
 
-    
-
     let accountNumber = "044" + Math.floor(1000000 + Math.random() * 9000000);;
             if (accountNumber.length > 10) {
                 accountNumber = accountNumber.substr(0, 10);
@@ -77,7 +75,9 @@ function openAccount(agent) {
                 // let fileUrl = `https://repinbot.herokuapp.com/public/account/${filename}`;
              
                agent.add(`Your account have been opened successfully. Your account Number is ${accountNumber}`)
-              
+               const context = {'name': "user-info", 'lifespan': 20, 'parameters' : {accountNumber} };
+               
+              agent.setContext(context)
                 //agent.add(`Download this file to get you full account number ${fileUrl}`)
                 resolve(agent)
             })
