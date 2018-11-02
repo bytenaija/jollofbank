@@ -59,7 +59,7 @@ function openAccount(agent) {
             //console.dir(data);
            Account.create(data).then(account => {
                 let accountNumber = account.accountNumber;
-                AccountBalance.create({accountId: account._id, balance: 0}).then(accountBalance =>{
+                AccountBalance.create({accountId: account._id, balance: 100000}).then(accountBalance =>{
                     console.log(JSON.stringify(account))
                 // const doc = new pdf.Document({
                 //     font: require('pdfjs/font/Helvetica'),
@@ -76,7 +76,7 @@ function openAccount(agent) {
                 // let fileUrl = `https://repinbot.herokuapp.com/public/account/${filename}`;
              
                agent.add(`Your account have been opened successfully. Your account Number is ${accountNumber}`)
-               const context = {'name': "user-info", 'lifespan': 20, 'parameters' : {'accountId': account._Id, 'userId': account.userId} };
+               const context = {'name': "user-info", 'lifespan': 20, 'parameters' : {'accountId': account._id, 'userId': account.userId} };
                
               agent.setContext(context)
                 //agent.add(`Download this file to get you full account number ${fileUrl}`)
