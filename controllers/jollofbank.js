@@ -44,6 +44,8 @@ function rechargePhone(agent) {
         let context = agent.contexts.filter(context => {
             return context.name === 'user-info';
         })
+
+        context = context[0];
         console.log("Context", context);
         if (context.length !== 0) {
             AccountBalance.find({ accountId: context.parameters.accountId }).then(account => {
