@@ -69,7 +69,7 @@ function login(agent){
     User.findOne({ email: agent.parameters.email }).then(user => {
         console.log("user", user)
         if (user) {
-            Account.findOne({ userId: userId}).then(account =>{
+            Account.findOne({ userId: user._id}).then(account =>{
                 agent.add("You have successfully logged in")
                 const context = { 'name': "user-info", 'lifespan': 200, 'parameters': { 'accountId': account._id, 'userId': account.userId } };
 
