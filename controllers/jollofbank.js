@@ -38,7 +38,12 @@ function accountBalance(agent){
 }
 
 function rechargePhone(agent) {
-    console.log(agent.contexts);
+    console.log(agent.parameters);
+   let context = agent.contexts.filter(context =>{
+       return context.name === 'user-info';
+   })
+
+//    context.parameters
     agent.add(`Recharge card of ${agent.parameters.amount} has been successfully purchased ${agent.parameters.phoneNo}`);
 }
 
