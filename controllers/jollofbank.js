@@ -69,7 +69,8 @@ function rechargePhone(agent) {
 function openAccount(agent) {
     console.dir(agent)
     return new Promise((resolve, reject) => {
-        User.find({ email: agent.parameters.email }).then(user => {
+        User.findOne({ email: agent.parameters.email }).then(user => {
+            console.log("user", user)
             if (user) {
 
 
