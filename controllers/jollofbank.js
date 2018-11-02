@@ -42,16 +42,17 @@ function rechargePhone(agent) {
 
 function openAccount(agent) {
     console.dir(agent)
-    let {parameters} = agent;
+    
+
     let accountNumber = "044" + Math.floor(1000000 + Math.random() * 9000000);;
             if (accountNumber.length > 10) {
                 accountNumber = accountNumber.substr(0, 10);
             }
             let data = {};
             data.userId = uuidv4();
-            data.accountType = parameters.accountType
-            data.email = parameters.email
-            data.bvn = parameters.bvn.value
+            data.accountType = agent.parameters.accountType
+            data.email = agent.parameters.email
+            data.bvn = agent.parameters.bvn
             data.accountNumber = accountNumber;
 
             //console.dir(data);
