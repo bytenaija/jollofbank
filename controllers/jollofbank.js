@@ -12,78 +12,86 @@ const { WebhookClient, Card } = require('dialogflow-fulfillment')
 
 function miniStatement(agent) {
     console.log('transactions')
-return new Promise((resolve, reject)=>{
-    console.log(agent.contexts);
-    let context = agent.contexts.filter(context => {
-        return context.name === 'user-info';
-    })
-
- 
-    if (context.length !== 0) {
-        context = context[0];
-        console.log("context", context)
-Transaction.find({accountId: context.parameters.accountId}).then(transactions =>{
-    console.log("transactions", transactions)
-    if(transactions.length > 0){
-        let count = 1;
-        let t = ''
-        transactions.forEach(transaction =>{
-            t += `${count}) => ${transaction.description} on ${moment(transaction.createdAt).format("DD-MM-YYYY")} \r\n`
-            count++;
+    return new Promise((resolve, reject) => {
+        console.log(agent.contexts);
+        let context = agent.contexts.filter(context => {
+            return context.name === 'user-info';
         })
-        agent.add(t);
-        resolve(agent);
-    }
-})
-}
-})
+
+
+        if (context.length !== 0) {
+            context = context[0];
+            console.log("context", context)
+            Transaction.find({ accountId: context.parameters.accountId }).then(transactions => {
+                console.log("transactions", transactions)
+                if (transactions.length > 0) {
+                    let count = 1;
+                    let t = ''
+                    transactions.forEach(transaction => {
+                        t += `${count}) => ${transaction.description} on ${moment(transaction.createdAt).format("DD-MM-YYYY")}`
+                        count++;
+                    })
+                    agent.add(t);
+                    resolve(agent);
+                }
+            })
+        }
+    })
 }
 
 function accountBalance(agent) {
-    const userId = conversation._request.message.channelConversation.userId;
-    const accountType = conversation.properties().accountType;
-
-    conversation.logger().info('BalanceRetrieval: getting balance for account type=' + accountType);
-    Account.findOne({ userId: userId, accountType: accountType }).then(account => {
-
-        if (account) {
-            AccountBalance.findOne({ accountId: account._id }).then(balance => {
-
-                agent.add('The balance in your ' + accountType + ' account (' + account.accountNumber + ') is NGN' + String(balance.balance));
+    return new Promise((resolve, reject) => {
+        console.log(agent.contexts);
+        let context = agent.contexts.filter(context => {
+            return context.name === 'user-info';
+        })
 
 
+        if (context.length !== 0) {
+            context = context[0];
+            console.log("context", context)
+
+            Account.findOne({ userId: context.parameters.userId, accountType: agent.parameters.accountType }).then(account => {
+
+                if (account) {
+                    AccountBalance.findOne({ accountId: account._id }).then(balance => {
+                        agent.add('The balance in your ' + accountType + ' account (' + account.accountNumber + ') is NGN' + String(balance.balance));
+                        resolve(agent);
+
+                    })
+
+
+                } else {
+
+                    agent.add('Sorry, you don\'t have a ' + accountType + ' account!');
+
+                    resolve(agent);
+                }
             })
-
-
-        } else {
-
-            agent.add('Sorry, you don\'t have a ' + accountType + ' account!');
-
-
         }
     })
 }
 
-function login(agent){
+function login(agent) {
     return new Promise((resolve, reject) => {
-    User.findOne({ email: agent.parameters.email }).then(user => {
-        console.log("user", user)
-        if (user) {
-            Account.findOne({ userId: user._id}).then(account =>{
-                agent.add("You have successfully logged in")
-                const context = { 'name': "user-info", 'lifespan': 200, 'parameters': { 'accountId': account._id, 'userId': account.userId } };
+        User.findOne({ email: agent.parameters.email }).then(user => {
+            console.log("user", user)
+            if (user) {
+                Account.findOne({ userId: user._id }).then(account => {
+                    agent.add("You have successfully logged in")
+                    const context = { 'name': "user-info", 'lifespan': 200, 'parameters': { 'accountId': account._id, 'userId': account.userId } };
 
-                agent.setContext(context)
-                //agent.add(`Download this file to get you full account number ${fileUrl}`)
+                    agent.setContext(context)
+                    //agent.add(`Download this file to get you full account number ${fileUrl}`)
+                    resolve(agent)
+                })
+            } else {
+                agent.add("Your login information is not correct. Try Again!")
                 resolve(agent)
-            })
-        }else{
-            agent.add("Your login information is not correct. Try Again!")
-            resolve(agent)
-        }
-    })
+            }
+        })
 
-})
+    })
 
 }
 
@@ -94,19 +102,19 @@ function rechargePhone(agent) {
             return context.name === 'user-info';
         })
 
-     
+
         if (context.length !== 0) {
             context = context[0];
-           return AccountBalance.findOne({ accountId: context.parameters.accountId }).then(account => {
+            return AccountBalance.findOne({ accountId: context.parameters.accountId }).then(account => {
                 if (account) {
                     console.log('Account balance', account)
                     if (account.balance >= agent.parameters.amount) {
-                      return Transaction.create({ accountId: account.accountId, description: `Purchase of NGN ${agent.parameters.amount} for ${agent.parameters.phoneNo}`, amount: agent.parameters.amount }).then(transaction => {
-                        account.balance -=  agent.parameters.amount;
-                        
-                        account.save();
-                        
-                        agent.add(`Airtime of ${agent.parameters.amount} has been successfully purchased for ${agent.parameters.phoneNo}`);
+                        return Transaction.create({ accountId: account.accountId, description: `Purchase of NGN ${agent.parameters.amount} airtime for ${agent.parameters.phoneNo}`, amount: agent.parameters.amount }).then(transaction => {
+                            account.balance -= agent.parameters.amount;
+
+                            account.save();
+
+                            agent.add(`Airtime of ${agent.parameters.amount} has been successfully purchased for ${agent.parameters.phoneNo}`);
                             resolve(agent)
                         });
 
@@ -220,27 +228,27 @@ function openAccount(agent) {
             }
         })
 
-        })
-    }
+    })
+}
 
 function transferFunds(agent) {
 
-        }
+}
 
 module.exports = {
 
-            banking: (req, res) => {
-                const agent = new WebhookClient({ request: req, response: res });
-                console.log(agent.intent);
-                let intentMap = new Map(); // Map functions to Dialogflow intent names
-                intentMap.set('Account Opening', openAccount);
-                intentMap.set('login', login);
-                intentMap.set('Transfer', transferFunds);
-                intentMap.set('Transactions', miniStatement);
-                intentMap.set('Airtime', rechargePhone);
-                intentMap.set('Account Balance', accountBalance);
-                agent.handleRequest(intentMap);
-            }
+    banking: (req, res) => {
+        const agent = new WebhookClient({ request: req, response: res });
+        console.log(agent.intent);
+        let intentMap = new Map(); // Map functions to Dialogflow intent names
+        intentMap.set('Account Opening', openAccount);
+        intentMap.set('login', login);
+        intentMap.set('Transfer', transferFunds);
+        intentMap.set('Transactions', miniStatement);
+        intentMap.set('Airtime', rechargePhone);
+        intentMap.set('Account Balance', accountBalance);
+        agent.handleRequest(intentMap);
+    }
 
 
-        }
+}
