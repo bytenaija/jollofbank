@@ -33,6 +33,7 @@ Transaction.find({accountId: context.paramenters.accountId}, {sort: {'date': -1}
         resolve(agent);
     }
 })
+}
 })
 }
 
