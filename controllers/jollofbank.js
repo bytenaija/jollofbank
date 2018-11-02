@@ -80,7 +80,10 @@ function openAccount(agent) {
                agent.add(`Your account Number is ${accountNumber}`)
               
                 //agent.add(`Download this file to get you full account number ${fileUrl}`)
+                resolve(agent)
             })
+
+           
         })
 }
 
