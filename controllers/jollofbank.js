@@ -49,7 +49,7 @@ function rechargePhone(agent) {
         console.log("Context", context);
         if (context.length !== 0) {
             context = context[0];
-            AccountBalance.find({ accountId: context.parameters.accountId }).then(account => {
+            AccountBalance.findOne({ accountId: context.parameters.accountId }).then(account => {
                 if (account) {
                     console.log('Account balance', account)
                     if (account.balance >= agent.parameters.amount) {
