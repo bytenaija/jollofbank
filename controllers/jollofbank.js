@@ -6,6 +6,7 @@ const path = require('path');
 const Account = require('../models/Account');
 const AccountBalance = require('../models/AccountBalance');
 const User = require('../models/user');
+const Transaction = require('../models/Transaction');
 const {WebhookClient} = require('dialogflow-fulfillment')
 
 function miniStatement(agent) {
@@ -38,14 +39,31 @@ function accountBalance(agent){
 }
 
 function rechargePhone(agent) {
-    console.log(agent.parameters);
+    return new Promise((resolve, reject)=>{
+   
    let context = agent.contexts.filter(context =>{
        return context.name === 'user-info';
    })
 
-   console.log(context);
-//    context.parameters
-    agent.add(`Recharge card of ${agent.parameters.amount} has been successfully purchased ${agent.parameters.phoneNo}`);
+   if(context.length !== 0){
+    AccountBalance.find({accountId: context.parameters.accountId}).then(account =>{
+        if(account){
+            if(account.balance >= agent.parameters.amount){
+                Transaction.create({accountId: account.accountId, description: `Purchase of NGN ${agent.parameters.amount} for ${agent.parameters.phoneNo}`, amount: agent.parameters.amount}).then(transaction =>{
+                    agent.add(`Airtime of ${agent.parameters.amount} has been successfully purchased for ${agent.parameters.phoneNo}`);
+                });
+            }else{
+                agent.add(`You do not have sufficient amount in your account to complete this transaction`);
+            }
+
+        }
+
+        resolve(agent)
+    })
+}else{
+    agent.add(`It seems you may not have an account with us. Please open an account before trying this transaction`);
+}
+})
 }
 
 function openAccount(agent) {
