@@ -41,7 +41,7 @@ function miniStatement(agent) {
 
 function accountBalance(agent) {
     return new Promise((resolve, reject) => {
-        console.log(agent.contexts);
+        
         let context = agent.contexts.filter(context => {
             return context.name === 'user-info';
         })
@@ -52,9 +52,10 @@ function accountBalance(agent) {
             console.log("context", context)
 
             Account.findOne({ userId: context.parameters.userId, accountType: agent.parameters.accountType }).then(account => {
-
+                console.log("account", account)
                 if (account) {
                     AccountBalance.findOne({ accountId: account._id }).then(balance => {
+                        console.log("Balance", balance)
                         agent.add('The balance in your ' + accountType + ' account (' + account.accountNumber + ') is NGN' + String(balance.balance));
                         resolve(agent);
 
