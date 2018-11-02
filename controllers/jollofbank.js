@@ -56,7 +56,7 @@ function accountBalance(agent) {
                 if (account) {
                     AccountBalance.findOne({ accountId: account._id }).then(balance => {
                         console.log("Balance", balance)
-                        agent.add('The balance in your ' + accountType + ' account (' + account.accountNumber + ') is NGN' + String(balance.balance));
+                        agent.add('The balance in your ' + agent.parameters.accountType + ' account (' + account.accountNumber + ') is NGN' + String(balance.balance));
                         resolve(agent);
 
                     })
