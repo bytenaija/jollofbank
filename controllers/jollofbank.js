@@ -11,6 +11,7 @@ const Transaction = require('../models/Transaction');
 const { WebhookClient, Card } = require('dialogflow-fulfillment')
 
 function miniStatement(agent) {
+    console.log('transactions')
 return new Promise((resolve, reject)=>{
     let context = agent.contexts.filter(context => {
         return context.name === 'user-info';
