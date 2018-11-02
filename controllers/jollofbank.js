@@ -75,9 +75,8 @@ function openAccount(agent) {
                 // doc.end()
 
                 // let fileUrl = `https://repinbot.herokuapp.com/public/account/${filename}`;
-               agent.add("Your account have been opened successfully")
-
-               agent.add(`Your account Number is ${accountNumber}`)
+             
+               agent.add(`Your account have been opened successfully. Your account Number is ${accountNumber}`)
               
                 //agent.add(`Download this file to get you full account number ${fileUrl}`)
                 resolve(agent)
