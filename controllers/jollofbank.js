@@ -48,7 +48,7 @@ function rechargePhone(agent) {
      
         if (context.length !== 0) {
             context = context[0];
-           return AccountBalance.findOne({ accountId: context.parameters.accountId }).then(account => {
+           AccountBalance.findOne({ accountId: context.parameters.accountId }).then(account => {
                 if (account) {
                     console.log('Account balance', account)
                     if (account.balance >= agent.parameters.amount) {
