@@ -21,6 +21,7 @@ return new Promise((resolve, reject)=>{
     if (context.length !== 0) {
         context = context[0];
 Transaction.find({accountId: context.paramenters.accountId}, {sort: {'date': -1}, limit: 3}).then(transactions =>{
+    console.log("transactions", transactions)
     if(transactions.length > 0){
         transactions.forEach(transaction =>{
             agent.add(new Card({
