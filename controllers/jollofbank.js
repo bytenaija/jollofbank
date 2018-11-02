@@ -22,7 +22,7 @@ return new Promise((resolve, reject)=>{
     if (context.length !== 0) {
         context = context[0];
         console.log("context", context)
-Transaction.find({accountId: context.paramenters.accountId}).then(transactions =>{
+Transaction.find({accountId: context.parameters.accountId}).then(transactions =>{
     console.log("transactions", transactions)
     if(transactions.length > 0){
         transactions.forEach(transaction =>{
