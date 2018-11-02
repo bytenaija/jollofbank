@@ -42,6 +42,8 @@ function rechargePhone(agent) {
 
 function openAccount(agent) {
     console.dir(agent)
+    return new Promise((resolve, reject)=>{
+
     
 
     let accountNumber = "044" + Math.floor(1000000 + Math.random() * 9000000);;
@@ -76,9 +78,10 @@ function openAccount(agent) {
                agent.add("Your account have been opened successfully")
 
                agent.add(`Your account Number is ${accountNumber}`)
-               return Promise.resolve()
+              
                 //agent.add(`Download this file to get you full account number ${fileUrl}`)
             })
+        })
 }
 
 function transferFunds(agent) {
